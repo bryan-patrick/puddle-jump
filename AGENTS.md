@@ -34,6 +34,7 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 - Load the paper API key and secret from `.env`. Never store recovery codes, print secrets, or expose credentials to the React application.
 - Create the Alpaca trading client with `paper=True`. Do not create a live trading client without a new explicit decision from the project owner.
 - Keep Trades Suspended enabled in Alpaca until the project owner deliberately enables paper orders at the approved pull-request step.
+- Use `NewsClient` for historical news and keep it separate from stock-price requests.
 - Start current-price collection with `StockHistoricalDataClient` and one `StockSnapshotRequest` for the daily watchlist using the IEX feed.
 - Start with simple HTTP requests on the configured interval. Do not add WebSocket streaming unless polling becomes inadequate.
 - Read Alpaca's market clock before submitting an order. Initial orders run during regular market hours only.
@@ -117,6 +118,8 @@ puddle-jump/
 │   ├── falling_prices.py
 │   ├── decisions.py
 │   ├── decision_replay.py
+│   ├── alpaca_data.py
+│   ├── check_alpaca_data.py
 │   └── ...
 └── ui/src/
 ```
