@@ -1,0 +1,3065 @@
+{
+  "sources": [
+    {
+      "group": "sp500",
+      "name": "iShares Core S&P 500 ETF holdings",
+      "url": "https://www.ishares.com/us/products/239726/ishares-core-s-p-500-etf/latest-holdings.csv",
+      "date": "2026-08-07"
+    },
+    {
+      "group": "extra_tech",
+      "name": "Puddle Jump project decision",
+      "date": "2026-08-11"
+    }
+  ],
+  "stocks": [
+    {
+      "symbol": "A",
+      "name": "AGILENT TECHNOLOGIES INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AAPL",
+      "name": "APPLE INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ABBV",
+      "name": "ABBVIE",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ABNB",
+      "name": "AIRBNB CLASS A",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ABT",
+      "name": "ABBOTT LABORATORIES",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ACGL",
+      "name": "ARCH CAPITAL GROUP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ACN",
+      "name": "ACCENTURE PLC CLASS A",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ADBE",
+      "name": "ADOBE INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ADI",
+      "name": "ANALOG DEVICES",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ADM",
+      "name": "ARCHER DANIELS MIDLAND",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ADP",
+      "name": "AUTOMATIC DATA PROCESSING INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ADSK",
+      "name": "AUTODESK",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AEE",
+      "name": "AMEREN",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AEP",
+      "name": "AMERICAN ELECTRIC POWER INC",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AES",
+      "name": "AES",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AFL",
+      "name": "AFLAC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AIG",
+      "name": "AMERICAN INTERNATIONAL GROUP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AIZ",
+      "name": "ASSURANT INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AJG",
+      "name": "ARTHUR J GALLAGHER",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AKAM",
+      "name": "AKAMAI TECHNOLOGIES INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ALB",
+      "name": "ALBEMARLE CORP",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ALGN",
+      "name": "ALIGN TECHNOLOGY",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ALL",
+      "name": "ALLSTATE CORP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ALLE",
+      "name": "ALLEGION PLC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AMAT",
+      "name": "APPLIED MATERIAL INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AMCR",
+      "name": "AMCOR PLC",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AMD",
+      "name": "ADVANCED MICRO DEVICES",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AME",
+      "name": "AMETEK INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AMGN",
+      "name": "AMGEN INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AMP",
+      "name": "AMERIPRISE FINANCE INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AMT",
+      "name": "AMERICAN TOWER REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AMZN",
+      "name": "AMAZON.COM INC",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ANET",
+      "name": "ARISTA NETWORKS INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AON",
+      "name": "AON PLC CLASS A",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AOS",
+      "name": "A O SMITH",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "APA",
+      "name": "APA",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "APD",
+      "name": "AIR PRODUCTS AND CHEMICALS",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "APH",
+      "name": "AMPHENOL CORP CLASS A",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "APO",
+      "name": "APOLLO GLOBAL MANAGEMENT",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "APP",
+      "name": "APPLOVIN CLASS A",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "APTV",
+      "name": "APTIV PLC",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ARE",
+      "name": "ALEXANDRIA REAL ESTATE EQUITIES RE",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ARES",
+      "name": "ARES MANAGEMENT CLASS A",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ARM",
+      "name": "ARM HOLDINGS",
+      "sector": "Information Technology",
+      "group": "extra_tech"
+    },
+    {
+      "symbol": "ASML",
+      "name": "ASML HOLDING",
+      "sector": "Information Technology",
+      "group": "extra_tech"
+    },
+    {
+      "symbol": "ATO",
+      "name": "ATMOS ENERGY",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AVB",
+      "name": "AVALONBAY COMMUNITIES REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AVGO",
+      "name": "BROADCOM INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AVY",
+      "name": "AVERY DENNISON CORP",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AWK",
+      "name": "AMERICAN WATER WORKS",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AXON",
+      "name": "AXON ENTERPRISE",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AXP",
+      "name": "AMERICAN EXPRESS",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "AZO",
+      "name": "AUTOZONE INC",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BA",
+      "name": "BOEING",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BAC",
+      "name": "BANK OF AMERICA CORP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BALL",
+      "name": "BALL CORP",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BAX",
+      "name": "BAXTER INTERNATIONAL",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BBY",
+      "name": "BEST BUY",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BDX",
+      "name": "BECTON DICKINSON",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BEN",
+      "name": "FRANKLIN RESOURCES INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BF.B",
+      "name": "BROWN FORMAN CLASS B",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BG",
+      "name": "BUNGE GLOBAL SA",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BIIB",
+      "name": "BIOGEN INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BKNG",
+      "name": "BOOKING HOLDINGS",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BKR",
+      "name": "BAKER HUGHES CLASS A",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BLDR",
+      "name": "BUILDERS FIRSTSOURCE INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BLK",
+      "name": "BLACKROCK",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BMY",
+      "name": "BRISTOL MYERS SQUIBB",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BNY",
+      "name": "BANK OF NEW YORK MELLON CORP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BR",
+      "name": "BROADRIDGE FINANCIAL SOLUTIONS INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BRK.B",
+      "name": "BERKSHIRE HATHAWAY INC CLASS B",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BRO",
+      "name": "BROWN & BROWN INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BSX",
+      "name": "BOSTON SCIENTIFIC CORP",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BX",
+      "name": "BLACKSTONE",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "BXP",
+      "name": "BXP",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "C",
+      "name": "CITIGROUP INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CAH",
+      "name": "CARDINAL HEALTH",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CARR",
+      "name": "CARRIER GLOBAL",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CASY",
+      "name": "CASEYS GENERAL STORES INC",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CAT",
+      "name": "CATERPILLAR INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CB",
+      "name": "CHUBB",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CBOE",
+      "name": "CBOE GLOBAL MARKETS",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CBRE",
+      "name": "CBRE GROUP CLASS A",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CCI",
+      "name": "CROWN CASTLE INC",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CCL",
+      "name": "CARNIVAL CORP LTD",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CDNS",
+      "name": "CADENCE DESIGN SYSTEMS",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CDW",
+      "name": "CDW",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CEG",
+      "name": "CONSTELLATION ENERGY CORP",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CF",
+      "name": "CF INDUSTRIES HOLDINGS INC",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CFG",
+      "name": "CITIZENS FINANCIAL GROUP INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CHD",
+      "name": "CHURCH AND DWIGHT INC",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CHRW",
+      "name": "CH ROBINSON WORLDWIDE",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CHTR",
+      "name": "CHARTER COMMUNICATIONS CLASS A",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CI",
+      "name": "CIGNA",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CIEN",
+      "name": "CIENA",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CINF",
+      "name": "CINCINNATI FINANCIAL",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CL",
+      "name": "COLGATE-PALMOLIVE",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CLX",
+      "name": "CLOROX",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CMCSA",
+      "name": "COMCAST CLASS A",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CME",
+      "name": "CME GROUP CLASS A",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CMG",
+      "name": "CHIPOTLE MEXICAN GRILL",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CMI",
+      "name": "CUMMINS INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CMS",
+      "name": "CMS ENERGY",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CNC",
+      "name": "CENTENE CORP",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CNP",
+      "name": "CENTERPOINT ENERGY",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "COF",
+      "name": "CAPITAL ONE FINANCIAL CORP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "COHR",
+      "name": "COHERENT",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "COIN",
+      "name": "COINBASE GLOBAL INC CLASS A",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "COO",
+      "name": "COOPER",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "COP",
+      "name": "CONOCOPHILLIPS",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "COR",
+      "name": "CENCORA",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "COST",
+      "name": "COSTCO WHOLESALE CORP",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CPAY",
+      "name": "CORPAY",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CPRT",
+      "name": "COPART INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CPT",
+      "name": "CAMDEN PROPERTY TRUST REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CRH",
+      "name": "CRH PUBLIC LIMITED PLC",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CRL",
+      "name": "CHARLES RIVER LABORATORIES INTERNA",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CRM",
+      "name": "SALESFORCE",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CRWD",
+      "name": "CROWDSTRIKE HOLDINGS CLASS A",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CSCO",
+      "name": "CISCO SYSTEMS INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CSGP",
+      "name": "COSTAR GROUP",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CSX",
+      "name": "CSX",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CTAS",
+      "name": "CINTAS",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CTSH",
+      "name": "COGNIZANT TECHNOLOGY SOLUTIONS CLA",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CTVA",
+      "name": "CORTEVA",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CVNA",
+      "name": "CARVANA CLASS A",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CVS",
+      "name": "CVS HEALTH",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "CVX",
+      "name": "CHEVRON CORP",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "D",
+      "name": "DOMINION ENERGY INC",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DAL",
+      "name": "DELTA AIR LINES",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DASH",
+      "name": "DOORDASH CLASS A",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DD",
+      "name": "DUPONT DE NEMOURS",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DDOG",
+      "name": "DATADOG INC CLASS A",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DE",
+      "name": "DEERE",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DECK",
+      "name": "DECKERS OUTDOOR",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DELL",
+      "name": "DELL TECHNOLOGIES INC CLASS C",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DG",
+      "name": "DOLLAR GENERAL CORP",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DGX",
+      "name": "QUEST DIAGNOSTICS INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DHI",
+      "name": "D R HORTON INC",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DHR",
+      "name": "DANAHER CORP",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DIS",
+      "name": "WALT DISNEY",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DLR",
+      "name": "DIGITAL REALTY TRUST REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DLTR",
+      "name": "DOLLAR TREE INC",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DOC",
+      "name": "HEALTHPEAK PROPERTIES",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DOV",
+      "name": "DOVER CORP",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DOW",
+      "name": "DOW",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DPZ",
+      "name": "DOMINOS PIZZA",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DRI",
+      "name": "DARDEN RESTAURANTS INC",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DTE",
+      "name": "DTE ENERGY",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DUK",
+      "name": "DUKE ENERGY CORP",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DVA",
+      "name": "DAVITA INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DVN",
+      "name": "DEVON ENERGY",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "DXCM",
+      "name": "DEXCOM INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EBAY",
+      "name": "EBAY",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ECHO",
+      "name": "ECHOSTAR CLASS A",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ECL",
+      "name": "ECOLAB",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ED",
+      "name": "CONSOLIDATED EDISON",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EFX",
+      "name": "EQUIFAX",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EG",
+      "name": "EVEREST GROUP LTD",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EIX",
+      "name": "EDISON INTERNATIONAL",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EL",
+      "name": "ESTEE LAUDER INC CLASS A",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ELV",
+      "name": "ELEVANCE HEALTH INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EME",
+      "name": "EMCOR GROUP INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EMR",
+      "name": "EMERSON ELECTRIC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EOG",
+      "name": "EOG RESOURCES",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EQIX",
+      "name": "EQUINIX REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EQR",
+      "name": "EQUITY RESIDENTIAL REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EQT",
+      "name": "EQT",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ERIE",
+      "name": "ERIE INDEMNITY CLASS A",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ES",
+      "name": "EVERSOURCE ENERGY",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ESS",
+      "name": "ESSEX PROPERTY TRUST REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ETN",
+      "name": "EATON PLC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ETR",
+      "name": "ENTERGY CORP",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EVRG",
+      "name": "EVERGY",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EW",
+      "name": "EDWARDS LIFESCIENCES",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EXC",
+      "name": "EXELON CORP",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EXE",
+      "name": "EXPAND ENERGY",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EXPD",
+      "name": "EXPEDITORS INTERNATIONAL OF WASHIN",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EXPE",
+      "name": "EXPEDIA GROUP",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "EXR",
+      "name": "EXTRA SPACE STORAGE REIT INC",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "F",
+      "name": "FORD MOTOR CO",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FANG",
+      "name": "DIAMONDBACK ENERGY",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FAST",
+      "name": "FASTENAL",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FCX",
+      "name": "FREEPORT MCMORAN INC",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FDS",
+      "name": "FACTSET RESEARCH SYSTEMS",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FDX",
+      "name": "FEDEX CORP",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FDXF",
+      "name": "FEDEX FREIGHT HOLDING COMPANY INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FE",
+      "name": "FIRSTENERGY CORP",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FERG",
+      "name": "FERGUSON ENTERPRISES INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FFIV",
+      "name": "F5 INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FICO",
+      "name": "FAIR ISAAC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FIS",
+      "name": "FIDELITY NATIONAL INFORMATION SERV",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FISV",
+      "name": "FISERV INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FITB",
+      "name": "FIFTH THIRD BANCORP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FIX",
+      "name": "COMFORT SYSTEMS USA",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FLEX",
+      "name": "FLEX LTD",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FOX",
+      "name": "FOX CLASS B",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FOXA",
+      "name": "FOX CLASS A",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FRT",
+      "name": "FEDERAL REALTY INVESTMENT TRUST RE",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FSLR",
+      "name": "FIRST SOLAR",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FTNT",
+      "name": "FORTINET",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "FTV",
+      "name": "FORTIVE",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GD",
+      "name": "GENERAL DYNAMICS CORP",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GDDY",
+      "name": "GODADDY CLASS A",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GE",
+      "name": "GE AEROSPACE",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GEHC",
+      "name": "GE HEALTHCARE TECHNOLOGIES",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GEN",
+      "name": "GEN DIGITAL",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GEV",
+      "name": "GE VERNOVA INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GILD",
+      "name": "GILEAD SCIENCES INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GIS",
+      "name": "GENERAL MILLS INC",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GL",
+      "name": "GLOBE LIFE",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GLW",
+      "name": "CORNING",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GM",
+      "name": "GENERAL MOTORS",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GNRC",
+      "name": "GENERAC HOLDINGS",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GOOG",
+      "name": "ALPHABET CLASS C",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "ALPHABET CLASS A",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GPC",
+      "name": "GENUINE PARTS",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GPN",
+      "name": "GLOBAL PAYMENTS INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GRMN",
+      "name": "GARMIN",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GS",
+      "name": "GOLDMAN SACHS GROUP INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "GWW",
+      "name": "WW GRAINGER INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HAL",
+      "name": "HALLIBURTON",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HAS",
+      "name": "HASBRO",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HBAN",
+      "name": "HUNTINGTON BANCSHARES INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HCA",
+      "name": "HCA HEALTHCARE",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HD",
+      "name": "HOME DEPOT",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HIG",
+      "name": "HARTFORD INSURANCE GROUP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HII",
+      "name": "HUNTINGTON INGALLS INDUSTRIES",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HLT",
+      "name": "HILTON WORLDWIDE HOLDINGS INC",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HON",
+      "name": "HONEYWELL INTERNATIONAL INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HONA",
+      "name": "HONEYWELL AEROSPACE INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HOOD",
+      "name": "ROBINHOOD MARKETS CLASS A",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HPE",
+      "name": "HEWLETT PACKARD ENTERPRISE",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HPQ",
+      "name": "HP INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HRL",
+      "name": "HORMEL FOODS CORP",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HSIC",
+      "name": "HENRY SCHEIN",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HST",
+      "name": "HOST HOTELS & RESORTS REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HSY",
+      "name": "HERSHEY FOODS",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HUBB",
+      "name": "HUBBELL INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HUM",
+      "name": "HUMANA",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "HWM",
+      "name": "HOWMET AEROSPACE",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "IBKR",
+      "name": "INTERACTIVE BROKERS GROUP INC CLAS",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "IBM",
+      "name": "INTERNATIONAL BUSINESS MACHINES CO",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ICE",
+      "name": "INTERCONTINENTAL EXCHANGE INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "IDXX",
+      "name": "IDEXX LABORATORIES INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "IEX",
+      "name": "IDEX",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "IFF",
+      "name": "INTERNATIONAL FLAVORS & FRAGRANCES",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "INCY",
+      "name": "INCYTE CORP",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "INTC",
+      "name": "INTEL CORPORATION",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "INTU",
+      "name": "INTUIT",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "INVH",
+      "name": "INVITATION HOMES",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "IP",
+      "name": "INTERNATIONAL PAPER",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "IQV",
+      "name": "IQVIA HOLDINGS INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "IR",
+      "name": "INGERSOLL RAND INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "IRM",
+      "name": "IRON MOUNTAIN INC",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ISRG",
+      "name": "INTUITIVE SURGICAL INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "IT",
+      "name": "GARTNER",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ITW",
+      "name": "ILLINOIS TOOL INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "IVZ",
+      "name": "INVESCO LTD",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "J",
+      "name": "JACOBS SOLUTIONS INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "JBHT",
+      "name": "JB HUNT TRANSPORT SERVICES INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "JBL",
+      "name": "JABIL",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "JCI",
+      "name": "JOHNSON CONTROLS INTERNATIONAL PLC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "JKHY",
+      "name": "JACK HENRY AND ASSOCIATES INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "JNJ",
+      "name": "JOHNSON & JOHNSON",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "JPM",
+      "name": "JPMORGAN CHASE & CO",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "KDP",
+      "name": "KEURIG DR PEPPER INC",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "KEY",
+      "name": "KEYCORP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "KEYS",
+      "name": "KEYSIGHT TECHNOLOGIES",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "KHC",
+      "name": "KRAFT HEINZ",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "KIM",
+      "name": "KIMCO REALTY REIT CORP",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "KKR",
+      "name": "KKR AND CO INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "KLAC",
+      "name": "KLA",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "KMB",
+      "name": "KIMBERLY CLARK",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "KMI",
+      "name": "KINDER MORGAN",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "KO",
+      "name": "COCA-COLA",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "KR",
+      "name": "KROGER",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "KVUE",
+      "name": "KENVUE",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "L",
+      "name": "LOEWS",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LDOS",
+      "name": "LEIDOS HOLDINGS",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LEN",
+      "name": "LENNAR A CORP CLASS A",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LH",
+      "name": "LABCORP HOLDINGS",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LHX",
+      "name": "L3HARRIS TECHNOLOGIES",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LII",
+      "name": "LENNOX INTERNATIONAL INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LIN",
+      "name": "LINDE PLC",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LITE",
+      "name": "LUMENTUM HOLDINGS",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LLY",
+      "name": "ELI LILLY",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LMT",
+      "name": "LOCKHEED MARTIN CORP",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LNT",
+      "name": "ALLIANT ENERGY CORP",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LOW",
+      "name": "LOWES COMPANIES INC",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LRCX",
+      "name": "LAM RESEARCH",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LULU",
+      "name": "LULULEMON ATHLETICA",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LUV",
+      "name": "SOUTHWEST AIRLINES",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LVS",
+      "name": "LAS VEGAS SANDS",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LYB",
+      "name": "LYONDELLBASELL INDUSTRIES CLASS A",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "LYV",
+      "name": "LIVE NATION ENTERTAINMENT",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MA",
+      "name": "MASTERCARD CLASS A",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MAA",
+      "name": "MID AMERICA APARTMENT COMMUNITIES",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MAR",
+      "name": "MARRIOTT INTERNATIONAL CLASS A",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MAS",
+      "name": "MASCO",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MCD",
+      "name": "MCDONALDS CORP",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MCHP",
+      "name": "MICROCHIP TECHNOLOGY INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MCK",
+      "name": "MCKESSON CORP",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MCO",
+      "name": "MOODYS CORP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MDLZ",
+      "name": "MONDELEZ INTERNATIONAL INC CLASS A",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MDT",
+      "name": "MEDTRONIC PLC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MET",
+      "name": "METLIFE",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "META",
+      "name": "META PLATFORMS CLASS A",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MGM",
+      "name": "MGM RESORTS INTERNATIONAL",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MKC",
+      "name": "MCCORMICK & CO NON-VOTING",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MLM",
+      "name": "MARTIN MARIETTA MATERIALS",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MMM",
+      "name": "3M",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MNST",
+      "name": "MONSTER BEVERAGE CORP",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MO",
+      "name": "ALTRIA GROUP INC",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MOS",
+      "name": "MOSAIC",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MPC",
+      "name": "MARATHON PETROLEUM",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MPWR",
+      "name": "MONOLITHIC POWER SYSTEMS INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MRK",
+      "name": "MERCK & CO INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MRNA",
+      "name": "MODERNA INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MRSH",
+      "name": "MARSH INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MRVL",
+      "name": "MARVELL TECHNOLOGY",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MS",
+      "name": "MORGAN STANLEY",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MSCI",
+      "name": "MSCI INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MSFT",
+      "name": "MICROSOFT",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MSI",
+      "name": "MOTOROLA SOLUTIONS INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MTB",
+      "name": "M&T BANK",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MTD",
+      "name": "METTLER TOLEDO",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "MU",
+      "name": "MICRON TECHNOLOGY",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NCLH",
+      "name": "NORWEGIAN CRUISE LINE HOLDINGS",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NDAQ",
+      "name": "NASDAQ INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NDSN",
+      "name": "NORDSON",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NEE",
+      "name": "NEXTERA ENERGY",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NEM",
+      "name": "NEWMONT",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NFLX",
+      "name": "NETFLIX",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NI",
+      "name": "NISOURCE",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NKE",
+      "name": "NIKE CLASS B",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NOC",
+      "name": "NORTHROP GRUMMAN CORP",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NOW",
+      "name": "SERVICENOW INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NRG",
+      "name": "NRG ENERGY INC",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NSC",
+      "name": "NORFOLK SOUTHERN CORP",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NTAP",
+      "name": "NETAPP INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NTRS",
+      "name": "NORTHERN TRUST",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NUE",
+      "name": "NUCOR CORP",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA CORP",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NVR",
+      "name": "NVR",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NWS",
+      "name": "NEWS CLASS B",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NWSA",
+      "name": "NEWS CLASS A",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "NXPI",
+      "name": "NXP SEMICONDUCTORS NV",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "O",
+      "name": "REALTY INCOME REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ODFL",
+      "name": "OLD DOMINION FREIGHT LINE",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "OKE",
+      "name": "ONEOK",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "OMC",
+      "name": "OMNICOM GROUP INC",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ON",
+      "name": "ON SEMICONDUCTOR CORP",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ORCL",
+      "name": "ORACLE",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ORLY",
+      "name": "OREILLY AUTOMOTIVE INC",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "OTIS",
+      "name": "OTIS WORLDWIDE",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "OXY",
+      "name": "OCCIDENTAL PETROLEUM CORP",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PANW",
+      "name": "PALO ALTO NETWORKS",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PAYX",
+      "name": "PAYCHEX",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PCAR",
+      "name": "PACCAR INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PCG",
+      "name": "PG&E CORP",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PEG",
+      "name": "PUBLIC SERVICE ENTERPRISE GROUP IN",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PEP",
+      "name": "PEPSICO INC",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PFE",
+      "name": "PFIZER",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PFG",
+      "name": "PRINCIPAL FINANCIAL GROUP INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PG",
+      "name": "PROCTER & GAMBLE",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PGR",
+      "name": "PROGRESSIVE CORP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PH",
+      "name": "PARKER-HANNIFIN CORP",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PHM",
+      "name": "PULTEGROUP",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PKG",
+      "name": "PACKAGING CORP OF AMERICA",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PLD",
+      "name": "PROLOGIS REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PLTR",
+      "name": "PALANTIR TECHNOLOGIES CLASS A",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PM",
+      "name": "PHILIP MORRIS INTERNATIONAL INC",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PNC",
+      "name": "PNC FINANCIAL SERVICES GROUP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PNR",
+      "name": "PENTAIR",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PNW",
+      "name": "PINNACLE WEST",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PODD",
+      "name": "INSULET",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PPG",
+      "name": "PPG INDUSTRIES",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PPL",
+      "name": "PPL CORP",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PRU",
+      "name": "PRUDENTIAL FINANCIAL INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PSA",
+      "name": "PUBLIC STORAGE REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PSKY",
+      "name": "PARAMOUNT SKYDANCE CORP CLASS B",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PSX",
+      "name": "PHILLIPS 66",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PTC",
+      "name": "PTC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PWR",
+      "name": "QUANTA SERVICES INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "PYPL",
+      "name": "PAYPAL HOLDINGS INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "Q",
+      "name": "QNITY ELECTRONICS",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "QCOM",
+      "name": "QUALCOMM",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "RCL",
+      "name": "ROYAL CARIBBEAN GROUP",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "REG",
+      "name": "REGENCY CENTERS REIT CORP",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "REGN",
+      "name": "REGENERON PHARMACEUTICALS",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "RF",
+      "name": "REGIONS FINANCIAL",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "RJF",
+      "name": "RAYMOND JAMES",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "RL",
+      "name": "RALPH LAUREN CLASS A",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "RMD",
+      "name": "RESMED",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ROK",
+      "name": "ROCKWELL AUTOMATION INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ROL",
+      "name": "ROLLINS INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ROP",
+      "name": "ROPER TECHNOLOGIES",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ROST",
+      "name": "ROSS STORES INC",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "RSG",
+      "name": "REPUBLIC SERVICES INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "RTX",
+      "name": "RTX CORP",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "RVTY",
+      "name": "REVVITY",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SAP",
+      "name": "SAP",
+      "sector": "Information Technology",
+      "group": "extra_tech"
+    },
+    {
+      "symbol": "SBAC",
+      "name": "SBA COMMUNICATIONS REIT CORP CLASS",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SBUX",
+      "name": "STARBUCKS CORP",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SCHW",
+      "name": "CHARLES SCHWAB",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SHOP",
+      "name": "SHOPIFY",
+      "sector": "Information Technology",
+      "group": "extra_tech"
+    },
+    {
+      "symbol": "SHW",
+      "name": "SHERWIN WILLIAMS",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SJM",
+      "name": "JM SMUCKER",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SLB",
+      "name": "SLB NV",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SMCI",
+      "name": "SUPER MICRO COMPUTER INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SNA",
+      "name": "SNAP ON INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SNDK",
+      "name": "SANDISK",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SNPS",
+      "name": "SYNOPSYS",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SO",
+      "name": "SOUTHERN",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SOLV",
+      "name": "SOLVENTUM",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SPG",
+      "name": "SIMON PROPERTY GROUP REIT INC",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SPGI",
+      "name": "S&P GLOBAL INC",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SRE",
+      "name": "SEMPRA",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "STE",
+      "name": "STERIS",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "STLD",
+      "name": "STEEL DYNAMICS INC",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "STT",
+      "name": "STATE STREET",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "STX",
+      "name": "SEAGATE TECHNOLOGY HOLDINGS PLC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "STZ",
+      "name": "CONSTELLATION BRANDS CLASS A",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SW",
+      "name": "SMURFIT WESTROCK PLC",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SWK",
+      "name": "STANLEY BLACK & DECKER INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SWKS",
+      "name": "SKYWORKS SOLUTIONS",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SYF",
+      "name": "SYNCHRONY FINANCIAL",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SYK",
+      "name": "STRYKER",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "SYY",
+      "name": "SYSCO",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "T",
+      "name": "AT&T INC",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TAP",
+      "name": "MOLSON COORS BREWING CLASS B",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TDG",
+      "name": "TRANSDIGM GROUP",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TDY",
+      "name": "TELEDYNE TECHNOLOGIES INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TECH",
+      "name": "BIO TECHNE",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TEL",
+      "name": "TE CONNECTIVITY PLC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TER",
+      "name": "TERADYNE",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TFC",
+      "name": "TRUIST FINANCIAL",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TGT",
+      "name": "TARGET CORP",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TJX",
+      "name": "TJX",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TKO",
+      "name": "TKO GROUP HOLDINGS INC CLASS A",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TMO",
+      "name": "THERMO FISHER SCIENTIFIC INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TMUS",
+      "name": "T MOBILE US INC",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TPL",
+      "name": "TEXAS PACIFIC LAND",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TPR",
+      "name": "TAPESTRY",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TRGP",
+      "name": "TARGA RESOURCES",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TRMB",
+      "name": "TRIMBLE INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TROW",
+      "name": "T ROWE PRICE GROUP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TRV",
+      "name": "TRAVELERS COMPANIES",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TSCO",
+      "name": "TRACTOR SUPPLY",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TSLA",
+      "name": "TESLA INC",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TSM",
+      "name": "TAIWAN SEMICONDUCTOR MANUFACTURING",
+      "sector": "Information Technology",
+      "group": "extra_tech"
+    },
+    {
+      "symbol": "TSN",
+      "name": "TYSON FOODS INC CLASS A",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TT",
+      "name": "TRANE TECHNOLOGIES PLC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TTD",
+      "name": "TRADE DESK INC CLASS A",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TTWO",
+      "name": "TAKE TWO INTERACTIVE SOFTWARE",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TXN",
+      "name": "TEXAS INSTRUMENT INC",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TXT",
+      "name": "TEXTRON INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "TYL",
+      "name": "TYLER TECHNOLOGIES",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "UAL",
+      "name": "UNITED AIRLINES HOLDINGS",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "UBER",
+      "name": "UBER TECHNOLOGIES",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "UDR",
+      "name": "UDR REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "UHS",
+      "name": "UNIVERSAL HEALTH SERVICES INC CLAS",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ULTA",
+      "name": "ULTA BEAUTY INC",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "UNH",
+      "name": "UNITEDHEALTH GROUP INC",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "UNP",
+      "name": "UNION PACIFIC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "UPS",
+      "name": "UNITED PARCEL SERVICE INC CLASS B",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "URI",
+      "name": "UNITED RENTALS",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "USB",
+      "name": "US BANCORP",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "V",
+      "name": "VISA CLASS A",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VEEV",
+      "name": "VEEVA SYSTEMS CLASS A",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VICI",
+      "name": "VICI PPTYS INC",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VLO",
+      "name": "VALERO ENERGY CORP",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VLTO",
+      "name": "VERALTO CORP",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VMC",
+      "name": "VULCAN MATERIALS",
+      "sector": "Materials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VRSK",
+      "name": "VERISK ANALYTICS",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VRSN",
+      "name": "VERISIGN",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VRT",
+      "name": "VERTIV HOLDINGS CLASS A",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VRTX",
+      "name": "VERTEX PHARMACEUTICALS",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VST",
+      "name": "VISTRA",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VTR",
+      "name": "VENTAS REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VTRS",
+      "name": "VIATRIS",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "VZ",
+      "name": "VERIZON COMMUNICATIONS INC",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WAB",
+      "name": "WESTINGHOUSE AIR BRAKE TECHNOLOGIE",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WAT",
+      "name": "WATERS CORP",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WBD",
+      "name": "WARNER BROS. DISCOVERY SERIES A",
+      "sector": "Communication",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WDAY",
+      "name": "WORKDAY CLASS A",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WDC",
+      "name": "WESTERN DIGITAL CORP",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WEC",
+      "name": "WEC ENERGY GROUP INC",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WELL",
+      "name": "WELLTOWER",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WFC",
+      "name": "WELLS FARGO",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WM",
+      "name": "WASTE MANAGEMENT INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WMB",
+      "name": "WILLIAMS",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WMT",
+      "name": "WALMART INC",
+      "sector": "Consumer Staples",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WRB",
+      "name": "WR BERKLEY",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WSM",
+      "name": "WILLIAMS SONOMA INC",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WST",
+      "name": "WEST PHARMACEUTICAL SERVICES",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WTW",
+      "name": "WILLIS TOWERS WATSON",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WY",
+      "name": "WEYERHAEUSER REIT",
+      "sector": "Real Estate",
+      "group": "sp500"
+    },
+    {
+      "symbol": "WYNN",
+      "name": "WYNN RESORTS",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "XEL",
+      "name": "XCEL ENERGY INC",
+      "sector": "Utilities",
+      "group": "sp500"
+    },
+    {
+      "symbol": "XOM",
+      "name": "EXXONMOBIL HOLDINGS CORP",
+      "sector": "Energy",
+      "group": "sp500"
+    },
+    {
+      "symbol": "XYL",
+      "name": "XYLEM INC",
+      "sector": "Industrials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "XYZ",
+      "name": "BLOCK CLASS A",
+      "sector": "Financials",
+      "group": "sp500"
+    },
+    {
+      "symbol": "YUM",
+      "name": "YUM BRANDS",
+      "sector": "Consumer Discretionary",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ZBH",
+      "name": "ZIMMER BIOMET HOLDINGS",
+      "sector": "Health Care",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ZBRA",
+      "name": "ZEBRA TECHNOLOGIES CORP CLASS A",
+      "sector": "Information Technology",
+      "group": "sp500"
+    },
+    {
+      "symbol": "ZTS",
+      "name": "ZOETIS INC CLASS A",
+      "sector": "Health Care",
+      "group": "sp500"
+    }
+  ]
+}
