@@ -6,6 +6,7 @@ from pathlib import Path
 
 DEFAULT_STOCK_POOL_PATH = Path("config/stock_pool.json")
 
+
 @dataclass(frozen=True)
 class Stock:
     """One stock in the eligible stock pool."""
@@ -41,7 +42,7 @@ def load_stock_pool(stock_pool_path: Path = DEFAULT_STOCK_POOL_PATH) -> list[Sto
             sector=saved_stock["sector"],
             group=saved_stock["group"],
         )
-        
+
         result.append(stock)
 
     return result
