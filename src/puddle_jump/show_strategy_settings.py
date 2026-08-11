@@ -12,3 +12,4 @@ def main() -> None:
     print(f"Falling prices needed to sell: {settings.falling_prices_needed_to_sell}")
     print(f"Minimum price rise: {settings.minimum_price_rise_percent}%")
     print(f"Minimum news outlook: {settings.minimum_news_outlook}")
+    print(f"Maximum loss: {settings.maximum_loss_percent}% below the buy price")

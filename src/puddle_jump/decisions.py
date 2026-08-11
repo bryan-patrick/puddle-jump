@@ -74,7 +74,7 @@ def decide_sell(
     symbol: str,
     stock_prices: list[StockPrice],
     stock_is_owned: bool,
-    reference_price: float,
+    buy_price: float,
     settings: StrategySettings,
 ) -> TradeDecision:
     """Return SELL when either initial sell rule passes for an owned stock."""
@@ -84,10 +84,11 @@ def decide_sell(
     if symbol != symbol.upper():
         raise ValueError("A sell decision stock symbol must be uppercase.")
 
-    if not math.isfinite(reference_price) or reference_price <= 0:
-        raise ValueError("A daily reference price must be a positive number.")
+    if not math.isfinite(buy_price) or buy_price <= 0:
+        raise ValueError("A stock's buy price must be a positive number.")
 
     check_price_symbols(symbol, stock_prices)
+    stop_price = buy_price - (buy_price * settings.maximum_loss_percent / 100)
 
     result = TradeDecision(
         symbol=symbol,
@@ -107,11 +108,14 @@ def decide_sell(
             action="NO_ACTION",
             reason=f"{symbol} does not have a current price.",
         )
-    elif stock_prices[-1].price < reference_price:
+    elif stock_prices[-1].price <= stop_price:
         result = TradeDecision(
             symbol=symbol,
             action="SELL",
-            reason=f"{symbol}'s latest price is below its daily reference price.",
+            reason=(
+                f"{symbol}'s latest price is at least "
+                f"{settings.maximum_loss_percent}% below its buy price."
+            ),
         )
     elif check_falling_prices(
         stock_prices,

@@ -3,3 +3,4 @@ rising_prices_needed_to_buy = 6
 falling_prices_needed_to_sell = 3
 minimum_price_rise_percent = 0.3
 minimum_news_outlook = 0.25
+maximum_loss_percent = 0.3
