@@ -51,7 +51,7 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 - Store symbols separately from changing daily outlooks and prices.
 - Before paper trading, use Alpaca to confirm that a selected stock is active, tradable, and eligible for the planned fractional order.
 - Record a daily initial outlook for every watched stock. Use a score from `-1.0` to `1.0`, where negative is unfavorable, zero is neutral, and positive is favorable.
-- Include the symbol, score, readable label, explanation, source, and timestamp in every outlook entry.
+- Include the symbol, score, readable label, explanation, sources, and timestamp in every outlook entry.
 - Allow manual and automated news analysis to produce the same outlook format so either can be used without changing the strategy.
 - Record the stock's daily reference price separately from its news-outlook weight; do not overload one value with both meanings.
 - Organize human-inspectable daily inputs and reports under a `YYYY-MM-DD` trading-day directory based on the relevant exchange timezone. Use unambiguous ISO 8601 timestamps with offsets for updates made during the day.
