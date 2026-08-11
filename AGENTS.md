@@ -71,7 +71,7 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 
 - Run one simple, configurable loop for the daily watchlist. A roughly 30-second interval is a reasonable starting point, not a hard-coded rule.
 - Buy only when the daily news outlook is favorable, every price in the latest configured number of observations is higher than the one before it, and the total move from first to last meets the configured minimum percentage.
-- Sell when the price falls below its daily reference value or trends downward for a shorter configured window. Half the buy window is a starting hypothesis to test, not an assumed truth.
+- Sell when the price falls below its daily reference value or every price in the latest configured sell window is lower than the one before it. Half the buy window is a starting hypothesis to test, not an assumed truth.
 - Return exactly one explicit decision: `BUY`, `SELL`, or `NO_ACTION`. Include a readable reason with every decision.
 - Keep intervals, trend windows, outlook thresholds, and other strategy values in configuration rather than scattering constants through the code.
 - Make every decision explainable from its recorded inputs.
@@ -114,6 +114,7 @@ puddle-jump/
 │   ├── trading_day_files.py
 │   ├── stock_prices.py
 │   ├── rising_prices.py
+│   ├── falling_prices.py
 │   └── ...
 └── ui/src/
 ```
