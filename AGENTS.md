@@ -70,7 +70,7 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 ## Initial strategy
 
 - Run one simple, configurable loop for the daily watchlist. A roughly 30-second interval is a reasonable starting point, not a hard-coded rule.
-- Buy only when the daily news outlook is favorable, the price has risen for a configured number of observations, and the total move meets a configured minimum percentage.
+- Buy only when the daily news outlook is favorable, every price in the latest configured number of observations is higher than the one before it, and the total move from first to last meets the configured minimum percentage.
 - Sell when the price falls below its daily reference value or trends downward for a shorter configured window. Half the buy window is a starting hypothesis to test, not an assumed truth.
 - Return exactly one explicit decision: `BUY`, `SELL`, or `NO_ACTION`. Include a readable reason with every decision.
 - Keep intervals, trend windows, outlook thresholds, and other strategy values in configuration rather than scattering constants through the code.
@@ -86,11 +86,12 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 
 ## Modularity and organization
 
-- Organize code into directories and packages by cohesive domain responsibility.
-- Give each package a clear owner and purpose, with a small, deliberate public interface.
+- Keep application code flat inside the single top-level `puddle_jump` package while the project is small.
+- Organize behavior into focused modules with plain names and cohesive responsibilities.
 - Keep concerns such as strategies, risk, execution, market data, storage, and reporting separate.
-- Avoid catch-all modules, miscellaneous utility directories, hidden cross-package coupling, and circular dependencies.
-- Prefer focused modules, but do not create a directory or abstraction for every class; boundaries should reflect meaningful responsibilities.
+- Avoid catch-all modules, miscellaneous utility files, hidden coupling, and circular dependencies.
+- Do not create one-file subpackages or repeat names such as `stock_prices/stock_prices.py`.
+- Create a subpackage only when an area has grown into several substantial modules and grouping them makes the project easier to navigate.
 
 ## Project structure
 
@@ -105,19 +106,15 @@ puddle-jump/
 │   ├── trading-days/YYYY-MM-DD/
 │   └── market/
 ├── src/puddle_jump/
-│   ├── stock_pool/
-│   ├── daily_watchlist/
-│   ├── daily_outlook/
-│   ├── trading_day_files/
-│   ├── stock_prices/
-│   ├── decisions/
-│   ├── risk/
-│   ├── account/
-│   ├── paper_trading/
-│   ├── trade_history/
-│   ├── daily_reports/
-│   ├── trading_loop/
-│   └── api/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── stock_pool.py
+│   ├── daily_watchlist.py
+│   ├── daily_outlook.py
+│   ├── trading_day_files.py
+│   ├── stock_prices.py
+│   ├── rising_prices.py
+│   └── ...
 └── ui/src/
 ```
 
