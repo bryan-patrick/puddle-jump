@@ -1,0 +1,25 @@
+# Local credentials
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.ruff_cache/
+
+# Generated trading records
+data/trading-days/
+data/market/
+*.db
+*.db-shm
+*.db-wal
+*.parquet
+
+# React
+node_modules/
+ui/dist/
+
+# macOS
+.DS_Store

@@ -1,0 +1,213 @@
+# Puddle Jump Agent Guide
+
+## Project direction
+
+Puddle Jump is a Python trading and backtesting project. Keep the system small, testable, and consistent between simulation and real-time operation.
+
+The initial product watches a fixed set of stocks, assigns each stock a daily news-based outlook, observes price momentum on a relaxed interval, and produces simple buy, sell, or no-action decisions.
+
+## Technology
+
+- Use Python 3.14 as the primary language.
+- Manage Python versions, environments, and dependencies with `uv`.
+- Use `ruff` for linting and formatting.
+- Prefer Polars for tabular data processing and analysis.
+- Use SQLite for initial application state and structured operational data.
+- Use Parquet for large historical market datasets.
+- Produce daily reports in Markdown.
+- Use React with TypeScript and TSX for the user interface. It must not contain trading logic.
+- Use Alpaca's official `alpaca-py` package for stock data and Alpaca paper trading.
+
+## Architecture
+
+- Maintain one Python core for signals, strategies, risk, execution, and events.
+- Run the same strategy and risk code against historical replay and live or paper market events.
+- Keep market-data and broker integrations behind adapters so operating mode does not change core decisions.
+- Begin with paper trading. Live execution must remain disabled until it is explicitly enabled and the strategy has passed replay and paper-trading validation.
+- Put a thin Python HTTP boundary between the Python application and the React UI. Do not move domain logic into that boundary.
+- Never duplicate trading logic between backtests and live or paper execution.
+- Treat any divergence between simulated and real-time behavior as an architectural defect unless it models a documented real-world constraint.
+
+## Alpaca integration
+
+- Use Alpaca's personal Trading API and Market Data API. Do not use the Broker API.
+- Load the paper API key and secret from `.env`. Never store recovery codes, print secrets, or expose credentials to the React application.
+- Create the Alpaca trading client with `paper=True`. Do not create a live trading client without a new explicit decision from the project owner.
+- Keep Trades Suspended enabled in Alpaca until the project owner deliberately enables paper orders at the approved pull-request step.
+- Start current-price collection with `StockHistoricalDataClient` and one `StockSnapshotRequest` for the full watchlist using the IEX feed.
+- Start with simple HTTP requests on the configured interval. Do not add WebSocket streaming unless polling becomes inadequate.
+- Read Alpaca's market clock before submitting an order. Initial orders run during regular market hours only.
+- Read the paper account and open positions from Alpaca before making paper-order decisions.
+- Use simple day market orders. Buy by a configured dollar amount so fractional trading can be used; sell the owned share quantity.
+- Record the Alpaca order ID, status, filled quantity, filled price, failure reason, and request ID when available.
+- Do not use options, short selling, margin, extended-hours trading, or PTP entries.
+
+## Daily inputs and records
+
+- Keep the watchlist static and explicitly configured at first. Store symbols separately from changing daily outlooks and prices.
+- Record a daily initial outlook for every watched stock. Use a score from `-1.0` to `1.0`, where negative is unfavorable, zero is neutral, and positive is favorable.
+- Include the symbol, score, readable label, explanation, source, and timestamp in every outlook entry.
+- Allow manual and automated news analysis to produce the same outlook format so either can be used without changing the strategy.
+- Record the stock's daily reference price separately from its news-outlook weight; do not overload one value with both meanings.
+- Organize human-inspectable daily inputs and reports under a `YYYY-MM-DD` trading-day directory based on the relevant exchange timezone. Use unambiguous ISO 8601 timestamps with offsets for updates made during the day.
+- Preserve the initial outlook and append timestamped revisions instead of silently overwriting history.
+- Keep live operational state and event records in SQLite, larger price histories in Parquet, and the daily summary in Markdown.
+
+## Daily scorecard
+
+- Create a `report.md` inside every trading-day directory, including days when no trades occur.
+- Record starting and ending cash, starting and ending account value, daily profit or loss in dollars and percent, trades made, results by stock, open positions, decisions and reasons, risk limits triggered, errors, and short notes.
+- Generate report numbers from recorded events and positions rather than entering totals by hand.
+- Keep the report easy to scan in plain language. It should answer: What did we do, why did we do it, and how did we do?
+
+## Initial strategy
+
+- Run one simple, configurable loop for the whole watchlist. A roughly 30-second interval is a reasonable starting point, not a hard-coded rule.
+- Buy only when the daily news outlook is favorable, the price has risen for a configured number of observations, and the total move meets a configured minimum percentage.
+- Sell when the price falls below its daily reference value or trends downward for a shorter configured window. Half the buy window is a starting hypothesis to test, not an assumed truth.
+- Return exactly one explicit decision: `BUY`, `SELL`, or `NO_ACTION`. Include a readable reason with every decision.
+- Keep intervals, trend windows, outlook thresholds, and other strategy values in configuration rather than scattering constants through the code.
+- Make every decision explainable from its recorded inputs.
+- Enforce configurable maximum position size, maximum total exposure, and daily loss limits before submitting any order.
+- Provide an emergency stop that prevents new orders and cancels pending orders without depending on the UI.
+
+## User interface
+
+- Render results with React and TSX, backed by a thin HTTP interface to the Python application.
+- Show the watchlist, daily outlook, reference and current prices, recent momentum, open position, latest decision, and the reason for that decision.
+- Keep calculations and order decisions out of UI components. The UI displays state and sends explicit user commands only.
+
+## Modularity and organization
+
+- Organize code into directories and packages by cohesive domain responsibility.
+- Give each package a clear owner and purpose, with a small, deliberate public interface.
+- Keep concerns such as strategies, risk, execution, market data, storage, and reporting separate.
+- Avoid catch-all modules, miscellaneous utility directories, hidden cross-package coupling, and circular dependencies.
+- Prefer focused modules, but do not create a directory or abstraction for every class; boundaries should reflect meaningful responsibilities.
+
+## Project structure
+
+Use this as the initial shape. Keep directory names plain and change them when ownership becomes clearer.
+
+```text
+puddle-jump/
+├── config/
+│   ├── watchlist.toml
+│   └── strategy.toml
+├── data/
+│   ├── trading-days/YYYY-MM-DD/
+│   └── market/
+├── src/puddle_jump/
+│   ├── watchlist/
+│   ├── daily_outlook/
+│   ├── stock_prices/
+│   ├── decisions/
+│   ├── risk/
+│   ├── account/
+│   ├── paper_trading/
+│   ├── trade_history/
+│   ├── daily_reports/
+│   ├── trading_loop/
+│   └── api/
+└── ui/src/
+```
+
+- Keep generated trading data out of source directories.
+- Start paper trading with a direct `buy_stocks()` operation. Add a separate `sell_stocks()` operation when needed instead of prematurely creating a generic order-execution framework.
+
+## Coding style
+
+- Beginner readability is a project requirement. Clever code that is harder to follow is not an improvement.
+- Follow the spirit of the owner's `codewars-challenges` solutions: direct, readable, and easy to trace from input to output.
+- Use plain everyday language in directory names, files, functions, variables, logs, comments, reports, and UI text.
+- Name functions after the action they perform, such as `check_prices()`, `decide_trades()`, `buy_stocks()`, and `write_daily_report()`.
+- Name values after what they contain, such as `stocks_to_watch`, `stock_prices`, `daily_outlook`, and `daily_profit`. Avoid vague names such as `data`, `item`, `obj`, `handler`, or `processor` when a specific name is available.
+- Avoid abbreviations unless the abbreviated form is the normal domain term and is clearer than spelling it out.
+- Prefer clear loops, conditionals, descriptive intermediate variables, and small focused functions over clever or compressed code.
+- Prefer pure functions for calculations and trading decisions: pass values in, initialize an explicit result, and return the result without hidden side effects.
+- For non-trivial logic, favor a visible `result` variable and an explicit return over a compressed expression.
+- Add docstrings or short comments around trading rules and non-obvious decisions. Explain purpose and reasoning rather than narrating obvious syntax.
+- Avoid dense one-liners, unnecessary metaprogramming, deep inheritance, premature generalization, and abstraction for its own sake.
+- Use built-ins and library helpers selectively. If chaining them obscures the algorithm, write the logic explicitly.
+- Do not reimplement well-tested standard, numerical, or data-processing primitives without a concrete reason.
+- Optimize first for correctness, readability, and debuggability; optimize performance when measurement or system requirements justify it.
+
+## Working practices
+
+- Treat this file as a living team agreement. Raise concerns, challenge weak decisions, and propose concrete alternatives when new evidence changes a tradeoff.
+- Add type hints to new Python code.
+- Keep domain logic independent of storage, transport, and UI concerns.
+- Prefer simple, explicit designs; introduce additional services or databases only for a demonstrated need.
+- Build one small feature at a time and give each feature its own pull request.
+- Keep every pull request focused on one purpose and leave the project working when merged.
+- Do not mix unrelated cleanup, refactoring, or future scaffolding into a feature pull request.
+- Create directories and shared records only when the current feature needs them. Do not generate the full planned tree up front.
+- Do not add automated tests or testing dependencies during the initial exploration. Manually run the current feature and report what was checked.
+- Revisit automated testing only after an explicit decision by the project owner.
+- The project owner handles Git: branches, commits, pushes, pull requests, merges, tags, and releases.
+- Agents may inspect Git state but must not change it unless the project owner explicitly asks for a specific Git action.
+- After completing one build step, stop and report the changed files, checks run, and a suggested pull-request title and summary for the owner to use.
+- Before starting a build step, agree with the project owner on that step's behavior and acceptance checks. Do not assume details belonging to later steps.
+
+## Pull request plan
+
+The project owner creates and manages the pull requests. Build these one at a time in order, then stop for review. Revisit later steps when earlier work teaches us something; the list is a guide, not permission to build ahead.
+
+### Baseline
+
+The repository currently has no commits. The project owner will establish `main` with this agreement, the chosen project icon, `.env.example`, and a practical `.gitignore`. This one-time baseline is not a feature pull request.
+
+### Repository introduction
+
+1. **Brief README:** Add a very short `README.md` for repository visitors with the project logo, a one-sentence description, the current early-development status, and a clear statement that live trading is not implemented or enabled.
+
+### Python application
+
+2. **Python project setup:** Add Python 3.14 metadata, `uv`, the importable `puddle_jump` package, `ruff`, and one simple command that proves the package runs.
+3. **Static watchlist:** Add `config/watchlist.toml` and `load_watchlist()`, then manually show which stocks were loaded.
+4. **Strategy settings:** Add `config/strategy.toml` and `load_strategy_settings()` with simple validation for the initial interval, trend windows, and thresholds.
+5. **Daily outlook:** Add the plain daily outlook record plus functions to write and read the agreed JSON format.
+6. **Trading-day files:** Create the `YYYY-MM-DD` directory for a chosen exchange date and preserve timestamped outlook updates.
+7. **Stock price observations:** Add the small price record and collect ordered price observations for each watched stock.
+8. **Rising-price check:** Add one pure function that decides whether a stock has risen for the configured number of observations and minimum percentage.
+9. **Falling-price check:** Add one pure function that decides whether a stock is falling for the configured sell window.
+10. **Buy decision:** Return `BUY` only when the outlook and rising-price rules pass and the stock is not already owned; otherwise return `NO_ACTION` with a reason.
+11. **Sell decision:** Return `SELL` when an owned stock falls below its initial price or passes the falling-price rule; otherwise return `NO_ACTION` with a reason.
+12. **Decision replay:** Feed fixed example prices through the same buy and sell decision functions and verify the resulting decisions. Do not simulate money or trades yet.
+13. **Simulated account:** Track starting cash, available cash, owned stocks, share counts, and account value without connecting to Alpaca.
+14. **Trading limits:** Check the agreed position, exposure, and daily loss limits before allowing a simulated trade.
+15. **Simulated buy:** Update the simulated account for a buy and prevent repeat buys while the stock is already owned.
+16. **Simulated sell:** Update the simulated account for a sell and update cash and ownership.
+17. **Trade history:** Record simulated buys, sells, decisions, reasons, and account changes in SQLite.
+18. **Daily scorecard:** Generate `report.md` from the recorded trade history and account state.
+19. **Trading loop:** Check the watchlist on the configured interval, make decisions, update the simulated account, and record what happened.
+20. **Simulated trading day:** Run the complete loop against fixed prices and verify the decisions, simulated trades, ending account, trade history, and daily scorecard together.
+
+### Alpaca paper integration
+
+21. **Alpaca SDK and credentials:** Add `alpaca-py` and the small `.env` loader, confirm they work with Python 3.14, and create read-only market-data and paper-trading clients. Stop and discuss rather than silently changing Python if compatibility fails.
+22. **Current stock prices:** Request one IEX snapshot for the full watchlist and translate the response into the project's plain stock-price records.
+23. **Market clock:** Read Alpaca's clock and report whether the regular stock market is open, plus the next open and close.
+24. **Paper account status:** Read cash, buying power, account value, blocked status, and the user-controlled Trades Suspended status without changing them.
+25. **Paper positions:** Read current Alpaca paper positions and translate them into the project's plain position records.
+
+Before the next pull request, stop so the project owner can review the read-only integration and deliberately turn off Trades Suspended.
+
+26. **Buy stocks through Alpaca:** Add `buy_stocks()` using a fractional day market order for the configured dollar amount, forced through `TradingClient(..., paper=True)`.
+27. **Sell stocks through Alpaca:** Add `sell_stocks()` using a day market order for the currently owned share quantity, forced through the paper client.
+28. **Order results:** Read submitted Alpaca orders until they are filled, rejected, canceled, or otherwise finished, then return the result in plain language.
+29. **Alpaca trade history:** Save Alpaca order IDs, results, fills, reasons, and account changes through the existing SQLite trade-history code.
+30. **Saved price history:** Write larger historical price data to Parquet and read it back for replay.
+
+### User interface
+
+31. **Read-only Python API:** Expose the watchlist, outlooks, prices, account, decisions, and daily results without adding trading logic.
+32. **React application shell:** Set up the TypeScript and TSX application, routing, formatting, and the project icon.
+33. **Trading dashboard:** Display the current watchlist, prices, outlooks, positions, latest decisions, reasons, and daily result.
+34. **Daily history view:** Let the user select a previous trading day and read its scorecard and activity.
+
+### Later work
+
+35. **Automated news outlook:** Scan news and write the same outlook format already accepted from manual input.
+36. **Paper-trading review:** Compare replay and paper results, document differences, and decide whether the strategy is ready for further work.
+37. **Live trading:** Plan this only after an explicit team decision; it is not authorized by this roadmap alone.
