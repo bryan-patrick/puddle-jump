@@ -117,6 +117,7 @@ puddle-jump/
 
 ## Coding style
 
+- Do not sound lame. Ever. Write like a person: direct, natural, and plain. Avoid corporate filler, canned phrases, forced enthusiasm, and marketing language.
 - Beginner readability is a project requirement. Clever code that is harder to follow is not an improvement.
 - Follow the spirit of the owner's `codewars-challenges` solutions: direct, readable, and easy to trace from input to output.
 - Use plain everyday language in directory names, files, functions, variables, logs, comments, reports, and UI text.
@@ -159,7 +160,7 @@ The repository currently has no commits. The project owner will establish `main`
 
 ### Repository introduction
 
-1. **Brief README:** Add a very short `README.md` for repository visitors with the project logo, a one-sentence description, the current early-development status, and a clear statement that live trading is not implemented or enabled.
+1. **Brief README:** Add a very short `README.md` for repository visitors with the project logo and a one-sentence description.
 
 ### Python application
 
