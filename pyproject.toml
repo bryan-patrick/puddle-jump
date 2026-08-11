@@ -8,9 +8,9 @@ dependencies = []
 
 [project.scripts]
 puddle-jump = "puddle_jump.main:main"
-show-daily-watchlist = "puddle_jump.daily_watchlist.show_daily_watchlist:main"
-show-strategy-settings = "puddle_jump.strategy_settings.show_strategy_settings:main"
-show-stock-pool = "puddle_jump.stock_pool.show_stock_pool:main"
+show-daily-watchlist = "puddle_jump.show_daily_watchlist:main"
+show-strategy-settings = "puddle_jump.show_strategy_settings:main"
+show-stock-pool = "puddle_jump.show_stock_pool:main"
 
 [dependency-groups]
 dev = [
