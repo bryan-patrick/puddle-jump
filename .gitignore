@@ -12,6 +12,8 @@ __pycache__/
 # Generated trading records
 data/trading-days/
 data/market/
+data/replay-inputs/*/news.json
+data/replay-inputs/*/prices.json
 *.db
 *.db-shm
 *.db-wal
