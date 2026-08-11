@@ -4,10 +4,14 @@ version = "0.1.0"
 description = "A simple stock trading application driven by news and price momentum."
 readme = "README.md"
 requires-python = ">=3.14,<3.15"
-dependencies = []
+dependencies = [
+    "alpaca-py>=0.44.0",
+    "python-dotenv>=1.2.2",
+]
 
 [project.scripts]
 puddle-jump = "puddle_jump.main:main"
+check-alpaca-data = "puddle_jump.check_alpaca_data:main"
 replay-decisions = "puddle_jump.decision_replay:main"
 show-daily-watchlist = "puddle_jump.show_daily_watchlist:main"
 show-strategy-settings = "puddle_jump.show_strategy_settings:main"
