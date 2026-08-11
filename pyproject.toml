@@ -13,6 +13,7 @@ dependencies = [
 puddle-jump = "puddle_jump.main:main"
 check-alpaca-data = "puddle_jump.check_alpaca_data:main"
 replay-decisions = "puddle_jump.decision_replay:main"
+save-historical-inputs = "puddle_jump.save_historical_inputs:main"
 show-daily-watchlist = "puddle_jump.show_daily_watchlist:main"
 show-strategy-settings = "puddle_jump.show_strategy_settings:main"
 show-stock-pool = "puddle_jump.show_stock_pool:main"
