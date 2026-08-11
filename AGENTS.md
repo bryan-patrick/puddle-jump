@@ -54,7 +54,7 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 - Record a daily initial outlook for every watched stock. Use a score from `-1.0` to `1.0`, where negative is unfavorable, zero is neutral, and positive is favorable.
 - Include the symbol, score, readable label, explanation, sources, and timestamp in every outlook entry.
 - Allow manual and automated news analysis to produce the same outlook format so either can be used without changing the strategy.
-- Record the stock's daily reference price separately from its news-outlook weight; do not overload one value with both meanings.
+- Record the stock's daily reference price separately from its news-outlook weight; use it as context, not as a sell trigger.
 - Record each observed stock price with its symbol and timezone-aware timestamp, keeping observations in chronological order for each stock.
 - Organize human-inspectable daily inputs and reports under a `YYYY-MM-DD` trading-day directory based on the relevant exchange timezone. Use unambiguous ISO 8601 timestamps with offsets for updates made during the day.
 - Preserve the initial outlook and append timestamped revisions instead of silently overwriting history.
@@ -73,7 +73,7 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 
 - Run one simple, configurable loop for the daily watchlist. A roughly 30-second interval is a reasonable starting point, not a hard-coded rule.
 - Buy only when the daily news outlook is favorable, every price in the latest configured number of observations is higher than the one before it, and the total move from first to last meets the configured minimum percentage.
-- Sell when the price falls below its daily reference value or every price in the latest configured sell window is lower than the one before it. Half the buy window is a starting hypothesis to test, not an assumed truth.
+- Sell when the price falls by the configured maximum percentage below its actual buy price or every price in the latest configured sell window is lower than the one before it. Half the buy window and a 0.3% maximum loss are starting hypotheses to test, not assumed truths.
 - Return exactly one explicit decision: `BUY`, `SELL`, or `NO_ACTION`. Include a readable reason with every decision.
 - Keep intervals, trend windows, outlook thresholds, and other strategy values in configuration rather than scattering constants through the code.
 - Make every decision explainable from its recorded inputs.
@@ -193,7 +193,7 @@ The project owner established `main` with this agreement, the chosen project ico
 9. **Rising-price check:** Add one pure function that decides whether a stock has risen for the configured number of observations and minimum percentage.
 10. **Falling-price check:** Add one pure function that decides whether a stock is falling for the configured sell window.
 11. **Buy decision:** Return `BUY` only when the outlook and rising-price rules pass and the stock is not already owned; otherwise return `NO_ACTION` with a reason.
-12. **Sell decision:** Return `SELL` when an owned stock falls below its initial price or passes the falling-price rule; otherwise return `NO_ACTION` with a reason.
+12. **Sell decision:** Return `SELL` when an owned stock reaches the configured maximum loss below its buy price or passes the falling-price rule; otherwise return `NO_ACTION` with a reason.
 13. **Decision replay:** Feed fixed example prices through the same buy and sell decision functions and verify the resulting decisions. Do not simulate money or trades yet.
 
 ### Early viability checkpoint

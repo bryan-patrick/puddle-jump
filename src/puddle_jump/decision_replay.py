@@ -70,7 +70,7 @@ def replay_decisions() -> list[TradeDecision]:
         symbol=symbol,
         stock_prices=falling_prices,
         stock_is_owned=True,
-        reference_price=100.00,
+        buy_price=100.00,
         settings=settings,
     )
     result.append(sell_decision)
