@@ -60,6 +60,7 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 - Preserve the initial outlook and append timestamped revisions instead of silently overwriting history.
 - Keep `watchlist.json` at the trading-day root and timestamped outlook files under `outlooks/`.
 - Keep live operational state and event records in SQLite, larger price histories in Parquet, and the daily summary in Markdown.
+- Keep Alpaca market data and news downloads local and ignored by Git unless Alpaca gives written permission to redistribute them. Commit the replay plan, source links, and manually assigned outlooks so the inputs can be recreated with the owner's credentials.
 
 ## Daily scorecard
 
@@ -105,6 +106,7 @@ puddle-jump/
 │   └── strategy.toml
 ├── data/
 │   ├── trading-days/YYYY-MM-DD/
+│   ├── replay-inputs/YYYY-MM-DD/
 │   └── market/
 ├── src/puddle_jump/
 │   ├── __init__.py
@@ -120,6 +122,8 @@ puddle-jump/
 │   ├── decision_replay.py
 │   ├── alpaca_data.py
 │   ├── check_alpaca_data.py
+│   ├── historical_inputs.py
+│   ├── save_historical_inputs.py
 │   └── ...
 └── ui/src/
 ```
