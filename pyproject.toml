@@ -8,6 +8,7 @@ dependencies = []
 
 [project.scripts]
 puddle-jump = "puddle_jump.main:main"
+replay-decisions = "puddle_jump.decision_replay:main"
 show-daily-watchlist = "puddle_jump.show_daily_watchlist:main"
 show-strategy-settings = "puddle_jump.show_strategy_settings:main"
 show-stock-pool = "puddle_jump.show_stock_pool:main"
