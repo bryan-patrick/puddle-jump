@@ -56,6 +56,7 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 - Record the stock's daily reference price separately from its news-outlook weight; do not overload one value with both meanings.
 - Organize human-inspectable daily inputs and reports under a `YYYY-MM-DD` trading-day directory based on the relevant exchange timezone. Use unambiguous ISO 8601 timestamps with offsets for updates made during the day.
 - Preserve the initial outlook and append timestamped revisions instead of silently overwriting history.
+- Keep `watchlist.json` at the trading-day root and timestamped outlook files under `outlooks/`.
 - Keep live operational state and event records in SQLite, larger price histories in Parquet, and the daily summary in Markdown.
 
 ## Daily scorecard
@@ -106,6 +107,7 @@ puddle-jump/
 │   ├── stock_pool/
 │   ├── daily_watchlist/
 │   ├── daily_outlook/
+│   ├── trading_day_files/
 │   ├── stock_prices/
 │   ├── decisions/
 │   ├── risk/
