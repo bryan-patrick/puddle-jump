@@ -54,6 +54,7 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 - Include the symbol, score, readable label, explanation, sources, and timestamp in every outlook entry.
 - Allow manual and automated news analysis to produce the same outlook format so either can be used without changing the strategy.
 - Record the stock's daily reference price separately from its news-outlook weight; do not overload one value with both meanings.
+- Record each observed stock price with its symbol and timezone-aware timestamp, keeping observations in chronological order for each stock.
 - Organize human-inspectable daily inputs and reports under a `YYYY-MM-DD` trading-day directory based on the relevant exchange timezone. Use unambiguous ISO 8601 timestamps with offsets for updates made during the day.
 - Preserve the initial outlook and append timestamped revisions instead of silently overwriting history.
 - Keep `watchlist.json` at the trading-day root and timestamped outlook files under `outlooks/`.
