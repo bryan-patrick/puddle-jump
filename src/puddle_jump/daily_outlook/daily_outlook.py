@@ -82,7 +82,11 @@ def create_daily_outlook(
     return result
 
 
-def write_daily_outlook(outlooks: list[DailyOutlook], outlook_path: Path) -> None:
+def write_daily_outlook(
+    outlooks: list[DailyOutlook],
+    outlook_path: Path,
+    replace_existing: bool = True,
+) -> None:
     """Write daily stock outlooks to a readable JSON file."""
     saved_outlooks: list[dict[str, object]] = []
 
@@ -101,7 +105,12 @@ def write_daily_outlook(outlooks: list[DailyOutlook], outlook_path: Path) -> Non
 
     saved_file = {"outlooks": saved_outlooks}
 
-    with outlook_path.open("w", encoding="utf-8") as outlook_file:
+    write_mode = "w"
+
+    if not replace_existing:
+        write_mode = "x"
+
+    with outlook_path.open(write_mode, encoding="utf-8") as outlook_file:
         json.dump(saved_file, outlook_file, indent=2)
         outlook_file.write("\n")
 
