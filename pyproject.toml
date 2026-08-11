@@ -8,6 +8,7 @@ dependencies = []
 
 [project.scripts]
 puddle-jump = "puddle_jump.main:main"
+show-stock-pool = "puddle_jump.stock_pool.show_stock_pool:main"
 
 [dependency-groups]
 dev = [
