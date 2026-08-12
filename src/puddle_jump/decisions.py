@@ -4,7 +4,7 @@ import math
 from dataclasses import dataclass
 
 from puddle_jump.daily_outlook import DailyOutlook
-from puddle_jump.falling_prices import check_falling_prices
+from puddle_jump.falling_prices import check_falling_prices, check_fast_price_drop
 from puddle_jump.rising_prices import check_rising_prices
 from puddle_jump.stock_prices import StockPrice
 from puddle_jump.strategy_settings import StrategySettings
@@ -117,9 +117,23 @@ def decide_sell(
                 f"{settings.maximum_loss_percent}% below its buy price."
             ),
         )
+    elif check_fast_price_drop(
+        stock_prices,
+        settings.falling_prices_needed_to_sell,
+        settings.maximum_fast_drop_percent,
+    ):
+        result = TradeDecision(
+            symbol=symbol,
+            action="SELL",
+            reason=(
+                f"{symbol}'s latest price fell at least "
+                f"{settings.maximum_fast_drop_percent}% from its recent high."
+            ),
+        )
     elif check_falling_prices(
         stock_prices,
         settings.falling_prices_needed_to_sell,
+        settings.minimum_falling_price_drop_percent,
     ):
         result = TradeDecision(
             symbol=symbol,
