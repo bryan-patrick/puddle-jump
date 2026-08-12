@@ -150,6 +150,8 @@ puddle-jump/
 ## Working practices
 
 - Treat this file as a living team agreement. Raise concerns, challenge weak decisions, and propose concrete alternatives when new evidence changes a tradeoff.
+- Use the root `./puddle` command for plain operational commands such as `./puddle shadow start`, `status`, `logs`, and `stop`.
+- Keep operational commands and background-process management in Python. The root `puddle` file may be a tiny launcher, but Node belongs only to the future React user interface.
 - Append every meaningful historical strategy experiment to `STRATEGY_TESTING.md`, including its exact inputs, settings, costs, results, and conclusion. Never erase an unfavorable result.
 - Add type hints to new Python code.
 - Keep domain logic independent of storage, transport, and UI concerns.
