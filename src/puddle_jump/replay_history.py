@@ -1,18 +1,11 @@
 """Run and report a cached multi-day replay of the trading strategy."""
 
-from datetime import timedelta
 from pathlib import Path
 
-from puddle_jump.alpaca_data import (
-    create_news_client,
-    create_stock_data_client,
-    load_alpaca_credentials,
-)
+from puddle_jump.alpaca_data import create_stock_data_client, load_alpaca_credentials
 from puddle_jump.history_cache import (
     DEFAULT_HISTORY_CACHE_DIRECTORY,
-    get_historical_news,
     get_historical_prices,
-    get_market_open,
     get_recent_trading_days,
     remove_expired_cache,
 )
@@ -20,7 +13,6 @@ from puddle_jump.history_replay_settings import (
     HistoryReplaySettings,
     load_history_replay_settings,
 )
-from puddle_jump.news_outlook import create_news_outlooks, load_news_words
 from puddle_jump.strategy_history import (
     HistoryReplayResult,
     combine_replay_days,
@@ -46,17 +38,6 @@ def count_replay_trades(replay_result: HistoryReplayResult) -> tuple[int, int]:
     return trade_count, winner_count
 
 
-def format_outlook_score(outlook_score: float | None) -> str:
-    """Format an outlook score without pretending missing news is neutral."""
-
-    result = "No news"
-
-    if outlook_score is not None:
-        result = f"{outlook_score:.2f}"
-
-    return result
-
-
 def build_history_report(
     replay_result: HistoryReplayResult,
     replay_settings: HistoryReplaySettings,
@@ -78,8 +59,7 @@ def build_history_report(
         f"- Trading days: {len(replay_result.day_results)}",
         f"- Stocks per day: {len(replay_settings.symbols)}",
         "- Price resolution: one-minute IEX bars",
-        "- News window: previous market close through one minute before market open",
-        "- News scoring: simple positive and negative headline words",
+        "- Buy input: price movement only",
         f"- Estimated cost: {replay_settings.estimated_trade_cost_percent:.2f}% per side",
         f"- Rising prices needed: {strategy_settings.rising_prices_needed_to_buy}",
         f"- Falling prices needed: {strategy_settings.falling_prices_needed_to_sell}",
@@ -125,16 +105,14 @@ def build_history_report(
                 "",
                 f"## {day_result.trading_day.isoformat()}",
                 "",
-                "| Stock | Outlook | Trades | Strategy | Buy and hold |",
-                "| --- | ---: | ---: | ---: | ---: |",
+                "| Stock | Trades | Strategy | Buy and hold |",
+                "| --- | ---: | ---: | ---: |",
             ]
         )
 
         for stock_result in day_result.stock_results:
-            outlook_score = format_outlook_score(stock_result.outlook_score)
             result_lines.append(
-                f"| {stock_result.symbol} | {outlook_score} "
-                f"| {len(stock_result.trades)} "
+                f"| {stock_result.symbol} | {len(stock_result.trades)} "
                 f"| {stock_result.strategy_return_percent:.4f}% "
                 f"| {stock_result.buy_and_hold_return_percent:.4f}% |"
             )
@@ -171,9 +149,8 @@ def build_history_report(
             "",
             "The replay gives every stock an equal share of the day and compounds the daily "
             "results. "
-            "A position still open at the close is marked at the final minute price. The headline "
-            "word score is intentionally basic, so this run evaluates that exact rule rather than "
-            "claiming to understand the news.",
+            "A position still open at the close is marked at the final minute price. This replay "
+            "uses the current short rising-price rule; the planned 30-minute rule is not included.",
             "",
         ]
     )
@@ -196,9 +173,7 @@ def replay_history() -> HistoryReplayResult:
 
     replay_settings = load_history_replay_settings()
     strategy_settings = load_strategy_settings()
-    news_words = load_news_words()
     credentials = load_alpaca_credentials()
-    news_client = create_news_client(credentials)
     stock_data_client = create_stock_data_client(credentials)
     expired_files_removed = remove_expired_cache(
         cache_directory=DEFAULT_HISTORY_CACHE_DIRECTORY,
@@ -213,16 +188,7 @@ def replay_history() -> HistoryReplayResult:
     cache_hits = int(trading_days_were_cached)
     downloads = int(not trading_days_were_cached)
 
-    for day_index, trading_day in enumerate(replay_days):
-        previous_trading_day = trading_days[day_index]
-        news_items, news_was_cached = get_historical_news(
-            news_client=news_client,
-            symbols=replay_settings.symbols,
-            trading_day=trading_day,
-            previous_trading_day=previous_trading_day,
-            cache_directory=DEFAULT_HISTORY_CACHE_DIRECTORY,
-            cache_days=replay_settings.cache_days,
-        )
+    for trading_day in replay_days:
         stock_prices, prices_were_cached = get_historical_prices(
             stock_data_client=stock_data_client,
             symbols=replay_settings.symbols,
@@ -231,27 +197,14 @@ def replay_history() -> HistoryReplayResult:
             cache_days=replay_settings.cache_days,
         )
 
-        if news_was_cached:
-            cache_hits += 1
-        else:
-            downloads += 1
-
         if prices_were_cached:
             cache_hits += 1
         else:
             downloads += 1
 
-        recorded_at = get_market_open(trading_day) - timedelta(minutes=1)
-        outlooks = create_news_outlooks(
-            symbols=replay_settings.symbols,
-            news_items=news_items,
-            recorded_at=recorded_at,
-            words=news_words,
-        )
         day_result = replay_trading_day(
             trading_day=trading_day,
             symbols=replay_settings.symbols,
-            outlooks=outlooks,
             stock_prices=stock_prices,
             strategy_settings=strategy_settings,
             estimated_trade_cost_percent=replay_settings.estimated_trade_cost_percent,

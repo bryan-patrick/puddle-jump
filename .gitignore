@@ -13,8 +13,6 @@ __pycache__/
 data/cache/
 data/trading-days/
 data/market/
-data/replay-inputs/*/news.json
-data/replay-inputs/*/prices.json
 *.db
 *.db-shm
 *.db-wal

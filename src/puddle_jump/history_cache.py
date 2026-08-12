@@ -1,4 +1,4 @@
-"""Download and cache the historical news and prices used by replay."""
+"""Download and cache the historical prices used by replay."""
 
 import json
 from datetime import date, datetime, time, timedelta, timezone
@@ -9,11 +9,9 @@ import polars as pl
 from alpaca.common.enums import Sort
 from alpaca.data.enums import DataFeed
 from alpaca.data.historical import StockHistoricalDataClient
-from alpaca.data.historical.news import NewsClient
-from alpaca.data.requests import NewsRequest, StockBarsRequest
+from alpaca.data.requests import StockBarsRequest
 from alpaca.data.timeframe import TimeFrame
 
-from puddle_jump.historical_inputs import HistoricalNews
 from puddle_jump.stock_prices import StockPrice, create_stock_price
 
 DEFAULT_HISTORY_CACHE_DIRECTORY = Path("data/cache/history")
@@ -151,168 +149,12 @@ def get_recent_trading_days(
     return result, False
 
 
-def get_news_cache_path(cache_directory: Path, trading_day: date) -> Path:
-    """Return one exchange day's local news cache path."""
-
-    result = cache_directory / "news" / f"{trading_day.isoformat()}.json"
-
-    return result
-
-
 def get_prices_cache_path(cache_directory: Path, trading_day: date) -> Path:
     """Return one exchange day's local price cache path."""
 
     result = cache_directory / "prices" / f"{trading_day.isoformat()}.parquet"
 
     return result
-
-
-def write_news_cache(
-    news_items: list[HistoricalNews],
-    requested_symbols: list[str],
-    cache_path: Path,
-) -> None:
-    """Save licensed news metadata in the local ignored cache."""
-
-    saved_news: list[dict[str, object]] = []
-
-    for news in news_items:
-        saved_news.append(
-            {
-                "article_id": news.article_id,
-                "headline": news.headline,
-                "source": news.source,
-                "url": news.url,
-                "created_at": news.created_at.isoformat(),
-                "updated_at": news.updated_at.isoformat(),
-                "symbols": news.symbols,
-            }
-        )
-
-    saved_file = {
-        "cached_at": datetime.now(timezone.utc).isoformat(),
-        "requested_symbols": requested_symbols,
-        "news": saved_news,
-    }
-    cache_path.parent.mkdir(parents=True, exist_ok=True)
-
-    with cache_path.open("w", encoding="utf-8") as cache_file:
-        json.dump(saved_file, cache_file, indent=2)
-        cache_file.write("\n")
-
-
-def read_news_cache(cache_path: Path) -> list[HistoricalNews]:
-    """Read news metadata from the local ignored cache."""
-
-    result: list[HistoricalNews] = []
-
-    with cache_path.open(encoding="utf-8") as cache_file:
-        saved_file = json.load(cache_file)
-
-    for saved_news in saved_file["news"]:
-        news = HistoricalNews(
-            article_id=saved_news["article_id"],
-            headline=saved_news["headline"],
-            source=saved_news["source"],
-            url=saved_news["url"],
-            created_at=datetime.fromisoformat(saved_news["created_at"]),
-            updated_at=datetime.fromisoformat(saved_news["updated_at"]),
-            symbols=saved_news["symbols"],
-        )
-        result.append(news)
-
-    return result
-
-
-def news_cache_matches_symbols(cache_path: Path, symbols: list[str]) -> bool:
-    """Return whether cached news was requested for the same stocks."""
-
-    with cache_path.open(encoding="utf-8") as cache_file:
-        saved_file = json.load(cache_file)
-
-    result = set(saved_file.get("requested_symbols", [])) == set(symbols)
-
-    return result
-
-
-def download_historical_news(
-    news_client: NewsClient,
-    symbols: list[str],
-    news_start: datetime,
-    recorded_at: datetime,
-) -> list[HistoricalNews]:
-    """Download only news that was available before the replayed open."""
-
-    request = NewsRequest(
-        symbols=",".join(symbols),
-        start=news_start,
-        end=recorded_at,
-        sort=Sort.ASC.value,
-    )
-    alpaca_news = news_client.get_news(request).data.get("news", [])
-    result: list[HistoricalNews] = []
-
-    for article in alpaca_news:
-        if article.created_at > recorded_at or article.updated_at > recorded_at:
-            continue
-
-        if not article.url:
-            continue
-
-        matching_symbols: list[str] = []
-
-        for symbol in article.symbols:
-            if symbol in symbols:
-                matching_symbols.append(symbol)
-
-        if not matching_symbols:
-            continue
-
-        news = HistoricalNews(
-            article_id=article.id,
-            headline=article.headline,
-            source=article.source,
-            url=article.url,
-            created_at=article.created_at,
-            updated_at=article.updated_at,
-            symbols=matching_symbols,
-        )
-        result.append(news)
-
-    result.sort(key=lambda news: news.created_at)
-
-    return result
-
-
-def get_historical_news(
-    news_client: NewsClient,
-    symbols: list[str],
-    trading_day: date,
-    previous_trading_day: date,
-    cache_directory: Path,
-    cache_days: int,
-) -> tuple[list[HistoricalNews], bool]:
-    """Read fresh cached news or download and cache it once."""
-
-    cache_path = get_news_cache_path(cache_directory, trading_day)
-
-    if cache_is_fresh(cache_path, cache_days) and news_cache_matches_symbols(
-        cache_path,
-        symbols,
-    ):
-        return read_news_cache(cache_path), True
-
-    news_start = get_market_close(previous_trading_day)
-    recorded_at = get_market_open(trading_day) - timedelta(minutes=1)
-    result = download_historical_news(
-        news_client=news_client,
-        symbols=symbols,
-        news_start=news_start,
-        recorded_at=recorded_at,
-    )
-    write_news_cache(result, symbols, cache_path)
-
-    return result, False
 
 
 def write_prices_cache(
