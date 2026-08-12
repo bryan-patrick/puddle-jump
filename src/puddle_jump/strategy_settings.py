@@ -31,9 +31,6 @@ def check_strategy_settings(settings: StrategySettings) -> None:
     if settings.falling_prices_needed_to_sell < 2:
         raise ValueError("A falling trend needs at least two prices.")
 
-    if settings.falling_prices_needed_to_sell > settings.rising_prices_needed_to_buy:
-        raise ValueError("The falling-price window cannot exceed the rising-price window.")
-
     if settings.minimum_price_rise_percent <= 0:
         raise ValueError("The minimum price rise must be greater than zero percent.")
 

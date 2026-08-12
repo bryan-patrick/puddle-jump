@@ -50,7 +50,7 @@ def build_history_report(
 
     trade_count, winner_count = count_replay_trades(replay_result)
     result_lines = [
-        "# Ten-day strategy replay",
+        f"# {len(replay_result.day_results)}-day strategy replay",
         "",
         "This is an exploration run, not evidence that the strategy will make money.",
         "",
@@ -60,8 +60,10 @@ def build_history_report(
         f"- Stocks per day: {len(replay_settings.symbols)}",
         "- Price resolution: one-minute IEX bars",
         "- Buy input: price movement only",
+        f"- Rising prices needed to buy: {strategy_settings.rising_prices_needed_to_buy}",
+        "- Historical tick spacing: one minute; the planned live loop checks every 30 seconds",
+        "- Re-entry: allowed after a sale",
         f"- Estimated cost: {replay_settings.estimated_trade_cost_percent:.2f}% per side",
-        f"- Rising prices needed: {strategy_settings.rising_prices_needed_to_buy}",
         f"- Falling prices needed: {strategy_settings.falling_prices_needed_to_sell}",
         f"- Cache retention: {replay_settings.cache_days} days",
         "",
@@ -117,31 +119,6 @@ def build_history_report(
                 f"| {stock_result.buy_and_hold_return_percent:.4f}% |"
             )
 
-        day_trades = []
-
-        for stock_result in day_result.stock_results:
-            for trade in stock_result.trades:
-                day_trades.append(trade)
-
-        if day_trades:
-            result_lines.extend(
-                [
-                    "",
-                    "### Trades",
-                    "",
-                    "| Stock | Bought | Sold | Return | Exit |",
-                    "| --- | --- | --- | ---: | --- |",
-                ]
-            )
-
-            for trade in day_trades:
-                bought_at = trade.bought_at.strftime("%H:%M")
-                sold_at = trade.sold_at.strftime("%H:%M")
-                result_lines.append(
-                    f"| {trade.symbol} | {bought_at} | {sold_at} "
-                    f"| {trade.return_percent:.4f}% | {trade.sell_reason} |"
-                )
-
     result_lines.extend(
         [
             "",
@@ -149,8 +126,8 @@ def build_history_report(
             "",
             "The replay gives every stock an equal share of the day and compounds the daily "
             "results. "
-            "A position still open at the close is marked at the final minute price. This replay "
-            "uses the current short rising-price rule; the planned 30-minute rule is not included.",
+            "A position still open at the close is marked at the final minute price. A stock may "
+            "be bought again after it is sold because no cooldown or daily trade limit exists.",
             "",
         ]
     )

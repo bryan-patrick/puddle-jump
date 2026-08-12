@@ -1,7 +1,7 @@
-check_prices_every_seconds = 30
-rising_prices_needed_to_buy = 6
-falling_prices_needed_to_sell = 5
-minimum_price_rise_percent = 0.3
-minimum_falling_price_drop_percent = 0.1
-maximum_fast_drop_percent = 0.3
-maximum_loss_percent = 0.3
+check_prices_every_seconds = 60
+rising_prices_needed_to_buy = 3
+falling_prices_needed_to_sell = 2
+minimum_price_rise_percent = 0.5
+minimum_falling_price_drop_percent = 0.5
+maximum_fast_drop_percent = 0.75
+maximum_loss_percent = 1

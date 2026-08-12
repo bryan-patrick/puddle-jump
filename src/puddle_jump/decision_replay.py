@@ -40,7 +40,7 @@ def replay_decisions() -> list[TradeDecision]:
 
     rising_prices = create_example_prices(
         symbol=symbol,
-        price_values=[100.00, 100.05, 100.10, 100.15, 100.20, 100.30],
+        price_values=[100.00, 100.10, 100.20, 100.30, 100.40, 100.50, 100.60],
         start_time=start_time,
         seconds_between_prices=settings.check_prices_every_seconds,
     )
