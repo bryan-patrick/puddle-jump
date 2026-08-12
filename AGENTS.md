@@ -4,7 +4,7 @@
 
 Puddle Jump is a Python trading and backtesting project. Keep the system small, testable, and consistent between simulation and real-time operation.
 
-The initial product starts with a broad pool of eligible stocks, selects a smaller daily watchlist from the news, observes price momentum on a relaxed interval, and produces simple buy, sell, or no-action decisions.
+The initial product starts with a broad pool of eligible stocks, finds stocks with recent upward price momentum, and produces simple buy, sell, or no-action decisions.
 
 ## Technology
 
@@ -34,7 +34,6 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 - Load the paper API key and secret from `.env`. Never store recovery codes, print secrets, or expose credentials to the React application.
 - Create the Alpaca trading client with `paper=True`. Do not create a live trading client without a new explicit decision from the project owner.
 - Keep Trades Suspended enabled in Alpaca until the project owner deliberately enables paper orders at the approved pull-request step.
-- Use `NewsClient` for historical news and keep it separate from stock-price requests.
 - Start current-price collection with `StockHistoricalDataClient` and one `StockSnapshotRequest` for the daily watchlist using the IEX feed.
 - Start with simple HTTP requests on the configured interval. Do not add WebSocket streaming unless polling becomes inadequate.
 - Read Alpaca's market clock before submitting an order. Initial orders run during regular market hours only.
@@ -47,21 +46,16 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 
 - Keep an eligible stock pool containing every S&P 500 constituent security plus an explicit list of major technology stocks outside the index.
 - Record the source and date of every stock-pool snapshot because index membership changes.
-- Keep the full stock pool separate from the smaller daily watchlist selected from the news.
-- Start with a manually selected daily watchlist. Automate the news scan only after the format and selection process are understood.
-- Store symbols separately from changing daily outlooks and prices.
+- Keep the full stock pool separate from the smaller set currently being watched or traded.
+- Select stocks from price movement only. Do not fetch, score, or use news as a trading input.
+- Store symbols separately from changing prices.
 - Before paper trading, use Alpaca to confirm that a selected stock is active, tradable, and eligible for the planned fractional order.
-- Record a daily initial outlook for every watched stock. Use a score from `-1.0` to `1.0`, where negative is unfavorable, zero is neutral, and positive is favorable.
-- Include the symbol, score, readable label, explanation, sources, and timestamp in every outlook entry.
-- Allow manual and automated news analysis to produce the same outlook format so either can be used without changing the strategy.
-- Record the stock's daily reference price separately from its news-outlook weight; use it as context, not as a sell trigger.
 - Record each observed stock price with its symbol and timezone-aware timestamp, keeping observations in chronological order for each stock.
 - Organize human-inspectable daily inputs and reports under a `YYYY-MM-DD` trading-day directory based on the relevant exchange timezone. Use unambiguous ISO 8601 timestamps with offsets for updates made during the day.
-- Preserve the initial outlook and append timestamped revisions instead of silently overwriting history.
-- Keep `watchlist.json` at the trading-day root and timestamped outlook files under `outlooks/`.
+- Keep `watchlist.json` at the trading-day root.
 - Keep live operational state and event records in SQLite, larger price histories in Parquet, and the daily summary in Markdown.
-- Keep Alpaca market data and news downloads local and ignored by Git unless Alpaca gives written permission to redistribute them. Commit the replay plan, source links, and manually assigned outlooks so the inputs can be recreated with the owner's credentials.
-- Cache downloaded news and historical prices locally for 30 days by default. Keep the retention period configurable and never commit the cache.
+- Keep Alpaca market-data downloads local and ignored by Git unless Alpaca gives written permission to redistribute them.
+- Cache downloaded historical prices locally for 30 days by default. Keep the retention period configurable and never commit the cache.
 
 ## Daily scorecard
 
@@ -73,13 +67,15 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 ## Initial strategy
 
 - Run one simple, configurable loop for the daily watchlist. A roughly 30-second interval is a reasonable starting point, not a hard-coded rule.
-- Buy only when the daily news outlook is favorable, every price in the latest configured number of observations is higher than the one before it, and the total move from first to last meets the configured minimum percentage.
+- The strategy is price-only. Do not make buy or sell decisions from news.
+- The current exploration rule buys when every price in the latest configured number of observations is higher than the one before it and the total move meets the configured minimum percentage.
+- The next entry rule to evaluate measures the total rise over 30 minutes, compares it with QQQ over the same window, and confirms the stock is still higher than it was five minutes ago. Treat those values as configurable hypotheses.
 - Sell immediately when the price reaches the configured maximum loss below its actual buy price, regardless of recent jitter.
 - Also sell immediately when the current price falls by the configured fast-drop percentage from the highest price in the recent sell window.
 - Otherwise, sell on a falling trend only when every price in the recent sell window is lower than the one before it and the total decline meets the configured minimum percentage.
 - Start with five prices, a 0.1% falling-trend decline, a 0.3% fast drop, and a 0.3% maximum loss. These are hypotheses to test, not assumed truths.
 - Return exactly one explicit decision: `BUY`, `SELL`, or `NO_ACTION`. Include a readable reason with every decision.
-- Keep intervals, trend windows, outlook thresholds, and other strategy values in configuration rather than scattering constants through the code.
+- Keep intervals, trend windows, and other strategy values in configuration rather than scattering constants through the code.
 - Make every decision explainable from its recorded inputs.
 - Enforce configurable maximum position size, maximum total exposure, and daily loss limits before submitting any order.
 - Provide an emergency stop that prevents new orders and cancels pending orders without depending on the UI.
@@ -87,7 +83,7 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 ## User interface
 
 - Render results with React and TSX, backed by a thin HTTP interface to the Python application.
-- Show the watchlist, daily outlook, reference and current prices, recent momentum, open position, latest decision, and the reason for that decision.
+- Show the watchlist, current prices, recent momentum, open position, latest decision, and the reason for that decision.
 - Keep calculations and order decisions out of UI components. The UI displays state and sends explicit user commands only.
 
 ## Modularity and organization
@@ -110,15 +106,13 @@ puddle-jump/
 │   └── strategy.toml
 ├── data/
 │   ├── trading-days/YYYY-MM-DD/
-│   ├── replay-inputs/YYYY-MM-DD/
+│   ├── replay-results/
 │   └── market/
 ├── src/puddle_jump/
 │   ├── __init__.py
 │   ├── main.py
 │   ├── stock_pool.py
 │   ├── daily_watchlist.py
-│   ├── daily_outlook.py
-│   ├── trading_day_files.py
 │   ├── stock_prices.py
 │   ├── rising_prices.py
 │   ├── falling_prices.py
@@ -126,8 +120,9 @@ puddle-jump/
 │   ├── decision_replay.py
 │   ├── alpaca_data.py
 │   ├── check_alpaca_data.py
-│   ├── historical_inputs.py
-│   ├── save_historical_inputs.py
+│   ├── history_cache.py
+│   ├── strategy_history.py
+│   ├── replay_history.py
 │   └── ...
 └── ui/src/
 ```
@@ -142,7 +137,7 @@ puddle-jump/
 - Follow the spirit of the owner's `codewars-challenges` solutions: direct, readable, and easy to trace from input to output.
 - Use plain everyday language in directory names, files, functions, variables, logs, comments, reports, and UI text.
 - Name functions after the action they perform, such as `check_prices()`, `decide_trades()`, `buy_stocks()`, and `write_daily_report()`.
-- Name values after what they contain, such as `stocks_to_watch`, `stock_prices`, `daily_outlook`, and `daily_profit`. Avoid vague names such as `data`, `item`, `obj`, `handler`, or `processor` when a specific name is available.
+- Name values after what they contain, such as `stocks_to_watch`, `stock_prices`, and `daily_profit`. Avoid vague names such as `data`, `item`, `obj`, `handler`, or `processor` when a specific name is available.
 - Avoid abbreviations unless the abbreviated form is the normal domain term and is clearer than spelling it out.
 - Prefer clear loops, conditionals, descriptive intermediate variables, and small focused functions over clever or compressed code.
 - Prefer pure functions for calculations and trading decisions: pass values in, initialize an explicit result, and return the result without hidden side effects.
@@ -166,7 +161,7 @@ puddle-jump/
 - Do not add automated unit tests or testing dependencies during the initial exploration. Historical strategy replay commands are useful evaluation tools and are not unit tests.
 - Revisit automated testing only after an explicit decision by the project owner.
 - Evaluate the trading idea against real historical inputs before building simulated accounts, order execution, or the user interface.
-- Historical evaluation must use only news and prices available at each simulated time, include estimated spread and slippage, and keep exploration periods separate from final evaluation periods.
+- Historical evaluation must use only prices available at each simulated time, include estimated spread and slippage, and keep exploration periods separate from final evaluation periods.
 - Agree on the viability measures before viewing final results. Stop after the viability report so the project owner can decide whether to continue, change the strategy, or end the project.
 - The project owner handles Git: branches, commits, pushes, pull requests, merges, tags, and releases.
 - Agents may inspect Git state but must not change it unless the project owner explicitly asks for a specific Git action.
@@ -191,57 +186,55 @@ The project owner established `main` with this agreement, the chosen project ico
 3. **Stock pool:** Save a dated S&P 500 snapshot plus the agreed extra technology stocks in `config/stock_pool.json`, add `load_stock_pool()`, and print the totals.
 4. **Daily watchlist:** Save and load a small, manually selected watchlist for one trading day and reject symbols outside the eligible stock pool.
 5. **Strategy settings:** Add `config/strategy.toml` and `load_strategy_settings()` with simple validation for the initial interval, trend windows, and thresholds.
-6. **Daily outlook:** Add the plain daily outlook record plus functions to write and read the agreed JSON format.
-7. **Trading-day files:** Create the `YYYY-MM-DD` directory for a chosen exchange date and preserve timestamped outlook updates.
-8. **Stock price observations:** Add the small price record and collect ordered price observations for each watched stock.
-9. **Rising-price check:** Add one pure function that decides whether a stock has risen for the configured number of observations and minimum percentage.
-10. **Falling-price check:** Add pure functions that detect a steady decline over the configured sell window and a fast drop from the recent high.
-11. **Buy decision:** Return `BUY` only when the outlook and rising-price rules pass and the stock is not already owned; otherwise return `NO_ACTION` with a reason.
-12. **Sell decision:** Return `SELL` when an owned stock reaches its maximum loss, drops quickly from its recent high, or passes the falling-price rule; otherwise return `NO_ACTION` with a reason.
-13. **Decision replay:** Feed fixed example prices through the same buy and sell decision functions and verify the resulting decisions. Do not simulate money or trades yet.
+6. **Stock price observations:** Add the small price record and collect ordered price observations for each watched stock.
+7. **Rising-price check:** Add one pure function that decides whether a stock has risen for the configured number of observations and minimum percentage.
+8. **Falling-price check:** Add pure functions that detect a steady decline over the configured sell window and a fast drop from the recent high.
+9. **Buy decision:** Return `BUY` only when the rising-price rule passes and the stock is not already owned; otherwise return `NO_ACTION` with a reason.
+10. **Sell decision:** Return `SELL` when an owned stock reaches its maximum loss, drops quickly from its recent high, or passes the falling-price rule; otherwise return `NO_ACTION` with a reason.
+11. **Decision replay:** Feed fixed example prices through the same buy and sell decision functions and verify the resulting decisions. Do not simulate money or trades yet.
 
 ### Early viability checkpoint
 
-14. **Alpaca historical data access:** Add `alpaca-py` and the small `.env` loader, confirm they work with Python 3.14, and create read-only stock-price and news clients. Stop and discuss rather than silently changing Python if compatibility fails.
-15. **Historical replay inputs:** Cache the premarket news and one-minute prices for ten stocks across ten completed trading days. Keep the 30-day local cache out of Git and reuse it between runs.
-16. **Historical viability report:** Create repeatable outlooks from the cached premarket headlines, replay the actual buy and sell rules, include estimated costs, and report returns, trade count, winners, and an equal-weight baseline.
+12. **Alpaca historical data access:** Add `alpaca-py` and the small `.env` loader, confirm they work with Python 3.14, and create the read-only stock-price client. Stop and discuss rather than silently changing Python if compatibility fails.
+13. **Historical replay inputs:** Cache one-minute prices for ten stocks across ten completed trading days. Keep the 30-day local cache out of Git and reuse it between runs.
+14. **Historical viability report:** Replay the actual buy and sell rules, include estimated costs, and report returns, trade count, winners, and an equal-weight baseline.
+15. **Thirty-minute entry rule:** Replace the short consecutive-price buy rule with the agreed 30-minute rise, QQQ comparison, and five-minute confirmation, then compare it with the existing replay result.
 
-Stop after the viability report. The project owner must explicitly decide whether to continue, change the strategy, or end the project before the remaining work begins.
+Stop after the thirty-minute comparison. The project owner must explicitly decide whether to continue, change the strategy, or end the project before the remaining work begins.
 
 ### Simulated trading
 
-17. **Simulated account:** Track starting cash, available cash, owned stocks, share counts, and account value without connecting to Alpaca.
-18. **Trading limits:** Check the agreed position, exposure, and daily loss limits before allowing a simulated trade.
-19. **Simulated buy:** Update the simulated account for a buy and prevent repeat buys while the stock is already owned.
-20. **Simulated sell:** Update the simulated account for a sell and update cash and ownership.
-21. **Trade history:** Record simulated buys, sells, decisions, reasons, and account changes in SQLite.
-22. **Daily scorecard:** Generate `report.md` from the recorded trade history and account state.
-23. **Trading loop:** Check the daily watchlist on the configured interval, make decisions, update the simulated account, and record what happened.
-24. **Simulated trading day:** Run the complete loop against fixed prices and verify the decisions, simulated trades, ending account, trade history, and daily scorecard together.
+16. **Simulated account:** Track starting cash, available cash, owned stocks, share counts, and account value without connecting to Alpaca.
+17. **Trading limits:** Check the agreed position, exposure, and daily loss limits before allowing a simulated trade.
+18. **Simulated buy:** Update the simulated account for a buy and prevent repeat buys while the stock is already owned.
+19. **Simulated sell:** Update the simulated account for a sell and update cash and ownership.
+20. **Trade history:** Record simulated buys, sells, decisions, reasons, and account changes in SQLite.
+21. **Daily scorecard:** Generate `report.md` from the recorded trade history and account state.
+22. **Trading loop:** Check the daily watchlist on the configured interval, make decisions, update the simulated account, and record what happened.
+23. **Simulated trading day:** Run the complete loop against fixed prices and verify the decisions, simulated trades, ending account, trade history, and daily scorecard together.
 
 ### Alpaca paper integration
 
-25. **Current stock prices:** Request one IEX snapshot for the daily watchlist and translate the response into the project's plain stock-price records.
-26. **Market clock:** Read Alpaca's clock and report whether the regular stock market is open, plus the next open and close.
-27. **Paper account status:** Create the forced-paper trading client and read cash, buying power, account value, blocked status, and the user-controlled Trades Suspended status without changing them.
-28. **Paper positions:** Read current Alpaca paper positions and translate them into the project's plain position records.
+24. **Current stock prices:** Request one IEX snapshot for the daily watchlist and translate the response into the project's plain stock-price records.
+25. **Market clock:** Read Alpaca's clock and report whether the regular stock market is open, plus the next open and close.
+26. **Paper account status:** Create the forced-paper trading client and read cash, buying power, account value, blocked status, and the user-controlled Trades Suspended status without changing them.
+27. **Paper positions:** Read current Alpaca paper positions and translate them into the project's plain position records.
 
 Before the next pull request, stop so the project owner can review the read-only integration and deliberately turn off Trades Suspended.
 
-29. **Buy stocks through Alpaca:** Add `buy_stocks()` using a fractional day market order for the configured dollar amount, forced through `TradingClient(..., paper=True)`.
-30. **Sell stocks through Alpaca:** Add `sell_stocks()` using a day market order for the currently owned share quantity, forced through the paper client.
-31. **Order results:** Read submitted Alpaca orders until they are filled, rejected, canceled, or otherwise finished, then return the result in plain language.
-32. **Alpaca trade history:** Save Alpaca order IDs, results, fills, reasons, and account changes through the existing SQLite trade-history code.
+28. **Buy stocks through Alpaca:** Add `buy_stocks()` using a fractional day market order for the configured dollar amount, forced through `TradingClient(..., paper=True)`.
+29. **Sell stocks through Alpaca:** Add `sell_stocks()` using a day market order for the currently owned share quantity, forced through the paper client.
+30. **Order results:** Read submitted Alpaca orders until they are filled, rejected, canceled, or otherwise finished, then return the result in plain language.
+31. **Alpaca trade history:** Save Alpaca order IDs, results, fills, reasons, and account changes through the existing SQLite trade-history code.
 
 ### User interface
 
-33. **Read-only Python API:** Expose the watchlist, outlooks, prices, account, decisions, and daily results without adding trading logic.
-34. **React application shell:** Set up the TypeScript and TSX application, routing, formatting, and the project icon.
-35. **Trading dashboard:** Display the current watchlist, prices, outlooks, positions, latest decisions, reasons, and daily result.
-36. **Daily history view:** Let the user select a previous trading day and read its scorecard and activity.
+32. **Read-only Python API:** Expose the watchlist, prices, account, decisions, and daily results without adding trading logic.
+33. **React application shell:** Set up the TypeScript and TSX application, routing, formatting, and the project icon.
+34. **Trading dashboard:** Display the current watchlist, prices, momentum, positions, latest decisions, reasons, and daily result.
+35. **Daily history view:** Let the user select a previous trading day and read its scorecard and activity.
 
 ### Later work
 
-37. **Improve automated news outlook:** Replace the exploratory headline-word score, scan news across the stock pool, select the daily watchlist, and write the same outlook format already accepted from manual input.
-38. **Paper-trading review:** Compare replay and paper results, document differences, and decide whether the strategy is ready for further work.
-39. **Live trading:** Plan this only after an explicit team decision; it is not authorized by this roadmap alone.
+36. **Paper-trading review:** Compare replay and paper results, document differences, and decide whether the strategy is ready for further work.
+37. **Live trading:** Plan this only after an explicit team decision; it is not authorized by this roadmap alone.

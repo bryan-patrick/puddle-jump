@@ -16,7 +16,6 @@ class StrategySettings:
     falling_prices_needed_to_sell: int
     minimum_price_rise_percent: float
     minimum_falling_price_drop_percent: float
-    minimum_news_outlook: float
     maximum_fast_drop_percent: float
     maximum_loss_percent: float
 
@@ -40,9 +39,6 @@ def check_strategy_settings(settings: StrategySettings) -> None:
 
     if settings.minimum_falling_price_drop_percent <= 0:
         raise ValueError("The minimum falling price drop must be greater than zero percent.")
-
-    if not 0 < settings.minimum_news_outlook <= 1:
-        raise ValueError("The minimum news outlook must be greater than zero and no more than one.")
 
     if not 0 < settings.maximum_fast_drop_percent <= 100:
         raise ValueError(
@@ -69,7 +65,6 @@ def load_strategy_settings(
         falling_prices_needed_to_sell=saved_settings["falling_prices_needed_to_sell"],
         minimum_price_rise_percent=saved_settings["minimum_price_rise_percent"],
         minimum_falling_price_drop_percent=saved_settings["minimum_falling_price_drop_percent"],
-        minimum_news_outlook=saved_settings["minimum_news_outlook"],
         maximum_fast_drop_percent=saved_settings["maximum_fast_drop_percent"],
         maximum_loss_percent=saved_settings["maximum_loss_percent"],
     )

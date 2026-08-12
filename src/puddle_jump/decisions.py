@@ -3,7 +3,6 @@
 import math
 from dataclasses import dataclass
 
-from puddle_jump.daily_outlook import DailyOutlook
 from puddle_jump.falling_prices import check_falling_prices, check_fast_price_drop
 from puddle_jump.rising_prices import check_rising_prices
 from puddle_jump.stock_prices import StockPrice
@@ -30,31 +29,32 @@ def check_price_symbols(
 
 
 def decide_buy(
-    daily_outlook: DailyOutlook,
+    symbol: str,
     stock_prices: list[StockPrice],
     stock_is_owned: bool,
     settings: StrategySettings,
 ) -> TradeDecision:
-    """Return BUY only when every initial buy rule passes."""
-    check_price_symbols(daily_outlook.symbol, stock_prices)
+    """Return BUY only when the current rising-price rule passes."""
+
+    if not symbol:
+        raise ValueError("A buy decision needs a stock symbol.")
+
+    if symbol != symbol.upper():
+        raise ValueError("A buy decision stock symbol must be uppercase.")
+
+    check_price_symbols(symbol, stock_prices)
 
     result = TradeDecision(
-        symbol=daily_outlook.symbol,
+        symbol=symbol,
         action="NO_ACTION",
-        reason=f"{daily_outlook.symbol}'s recent prices are not rising enough.",
+        reason=f"{symbol}'s recent prices are not rising enough.",
     )
 
     if stock_is_owned:
         result = TradeDecision(
-            symbol=daily_outlook.symbol,
+            symbol=symbol,
             action="NO_ACTION",
-            reason=f"{daily_outlook.symbol} is already owned.",
-        )
-    elif daily_outlook.score < settings.minimum_news_outlook:
-        result = TradeDecision(
-            symbol=daily_outlook.symbol,
-            action="NO_ACTION",
-            reason=f"{daily_outlook.symbol}'s daily outlook is below the minimum.",
+            reason=f"{symbol} is already owned.",
         )
     elif check_rising_prices(
         stock_prices,
@@ -62,9 +62,9 @@ def decide_buy(
         settings.minimum_price_rise_percent,
     ):
         result = TradeDecision(
-            symbol=daily_outlook.symbol,
+            symbol=symbol,
             action="BUY",
-            reason=f"{daily_outlook.symbol}'s outlook and rising prices meet the buy rules.",
+            reason=f"{symbol}'s recent prices meet the buy rule.",
         )
 
     return result

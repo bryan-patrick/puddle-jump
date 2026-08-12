@@ -3,7 +3,6 @@
 from dataclasses import dataclass
 from datetime import date, datetime
 
-from puddle_jump.daily_outlook import DailyOutlook
 from puddle_jump.decisions import decide_buy, decide_sell
 from puddle_jump.stock_prices import StockPrice
 from puddle_jump.strategy_settings import StrategySettings
@@ -27,7 +26,6 @@ class SymbolReplayResult:
     """One stock's strategy and baseline result for one day."""
 
     symbol: str
-    outlook_score: float | None
     trades: list[ReplayTrade]
     strategy_return_percent: float
     buy_and_hold_return_percent: float
@@ -116,7 +114,6 @@ def calculate_compounded_return(returns: list[float]) -> float:
 
 def replay_stock_day(
     symbol: str,
-    daily_outlook: DailyOutlook | None,
     stock_prices: list[StockPrice],
     strategy_settings: StrategySettings,
     estimated_trade_cost_percent: float,
@@ -165,9 +162,9 @@ def replay_stock_day(
                 bought_at = None
                 buy_price = 0.0
 
-        elif daily_outlook is not None:
+        else:
             buy_decision = decide_buy(
-                daily_outlook=daily_outlook,
+                symbol=symbol,
                 stock_prices=observed_prices,
                 stock_is_owned=False,
                 settings=strategy_settings,
@@ -205,14 +202,8 @@ def replay_stock_day(
         sell_price=stock_prices[-1].price,
         estimated_trade_cost_percent=estimated_trade_cost_percent,
     )
-    outlook_score = None
-
-    if daily_outlook is not None:
-        outlook_score = daily_outlook.score
-
     result = SymbolReplayResult(
         symbol=symbol,
-        outlook_score=outlook_score,
         trades=trades,
         strategy_return_percent=strategy_return_percent,
         buy_and_hold_return_percent=buy_and_hold_return_percent,
@@ -224,7 +215,6 @@ def replay_stock_day(
 def replay_trading_day(
     trading_day: date,
     symbols: list[str],
-    outlooks: dict[str, DailyOutlook],
     stock_prices: dict[str, list[StockPrice]],
     strategy_settings: StrategySettings,
     estimated_trade_cost_percent: float,
@@ -236,7 +226,6 @@ def replay_trading_day(
     for symbol in symbols:
         stock_result = replay_stock_day(
             symbol=symbol,
-            daily_outlook=outlooks.get(symbol),
             stock_prices=stock_prices[symbol],
             strategy_settings=strategy_settings,
             estimated_trade_cost_percent=estimated_trade_cost_percent,

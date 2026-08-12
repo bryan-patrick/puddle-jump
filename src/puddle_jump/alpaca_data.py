@@ -4,7 +4,6 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from alpaca.data.historical import StockHistoricalDataClient
-from alpaca.data.historical.news import NewsClient
 from dotenv import dotenv_values
 
 DEFAULT_ENV_PATH = Path(".env")
@@ -47,17 +46,6 @@ def create_stock_data_client(
     """Create Alpaca's read-only stock market-data client."""
 
     result = StockHistoricalDataClient(
-        api_key=credentials.api_key,
-        secret_key=credentials.secret_key,
-    )
-
-    return result
-
-
-def create_news_client(credentials: AlpacaCredentials) -> NewsClient:
-    """Create Alpaca's read-only historical news client."""
-
-    result = NewsClient(
         api_key=credentials.api_key,
         secret_key=credentials.secret_key,
     )

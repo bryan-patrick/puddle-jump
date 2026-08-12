@@ -3,7 +3,6 @@
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 
-from puddle_jump.daily_outlook import create_daily_outlook
 from puddle_jump.decisions import TradeDecision, decide_buy, decide_sell
 from puddle_jump.stock_prices import StockPrice, create_stock_price
 from puddle_jump.strategy_settings import load_strategy_settings
@@ -39,13 +38,6 @@ def replay_decisions() -> list[TradeDecision]:
     start_time = datetime(2026, 8, 11, 9, 30, tzinfo=MARKET_TIME_ZONE)
     settings = load_strategy_settings()
 
-    daily_outlook = create_daily_outlook(
-        symbol=symbol,
-        score=0.50,
-        explanation="The fixed replay uses a favorable news outlook.",
-        sources=["https://example.com/aapl-news"],
-        recorded_at=start_time,
-    )
     rising_prices = create_example_prices(
         symbol=symbol,
         price_values=[100.00, 100.05, 100.10, 100.15, 100.20, 100.30],
@@ -53,7 +45,7 @@ def replay_decisions() -> list[TradeDecision]:
         seconds_between_prices=settings.check_prices_every_seconds,
     )
     buy_decision = decide_buy(
-        daily_outlook=daily_outlook,
+        symbol=symbol,
         stock_prices=rising_prices,
         stock_is_owned=False,
         settings=settings,
