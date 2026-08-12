@@ -73,7 +73,10 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 
 - Run one simple, configurable loop for the daily watchlist. A roughly 30-second interval is a reasonable starting point, not a hard-coded rule.
 - Buy only when the daily news outlook is favorable, every price in the latest configured number of observations is higher than the one before it, and the total move from first to last meets the configured minimum percentage.
-- Sell when the price falls by the configured maximum percentage below its actual buy price or every price in the latest configured sell window is lower than the one before it. Half the buy window and a 0.3% maximum loss are starting hypotheses to test, not assumed truths.
+- Sell immediately when the price reaches the configured maximum loss below its actual buy price, regardless of recent jitter.
+- Also sell immediately when the current price falls by the configured fast-drop percentage from the highest price in the recent sell window.
+- Otherwise, sell on a falling trend only when every price in the recent sell window is lower than the one before it and the total decline meets the configured minimum percentage.
+- Start with five prices, a 0.1% falling-trend decline, a 0.3% fast drop, and a 0.3% maximum loss. These are hypotheses to test, not assumed truths.
 - Return exactly one explicit decision: `BUY`, `SELL`, or `NO_ACTION`. Include a readable reason with every decision.
 - Keep intervals, trend windows, outlook thresholds, and other strategy values in configuration rather than scattering constants through the code.
 - Make every decision explainable from its recorded inputs.
@@ -191,9 +194,9 @@ The project owner established `main` with this agreement, the chosen project ico
 7. **Trading-day files:** Create the `YYYY-MM-DD` directory for a chosen exchange date and preserve timestamped outlook updates.
 8. **Stock price observations:** Add the small price record and collect ordered price observations for each watched stock.
 9. **Rising-price check:** Add one pure function that decides whether a stock has risen for the configured number of observations and minimum percentage.
-10. **Falling-price check:** Add one pure function that decides whether a stock is falling for the configured sell window.
+10. **Falling-price check:** Add pure functions that detect a steady decline over the configured sell window and a fast drop from the recent high.
 11. **Buy decision:** Return `BUY` only when the outlook and rising-price rules pass and the stock is not already owned; otherwise return `NO_ACTION` with a reason.
-12. **Sell decision:** Return `SELL` when an owned stock reaches the configured maximum loss below its buy price or passes the falling-price rule; otherwise return `NO_ACTION` with a reason.
+12. **Sell decision:** Return `SELL` when an owned stock reaches its maximum loss, drops quickly from its recent high, or passes the falling-price rule; otherwise return `NO_ACTION` with a reason.
 13. **Decision replay:** Feed fixed example prices through the same buy and sell decision functions and verify the resulting decisions. Do not simulate money or trades yet.
 
 ### Early viability checkpoint
