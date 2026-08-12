@@ -64,7 +64,10 @@ def decide_buy(
         result = TradeDecision(
             symbol=symbol,
             action="BUY",
-            reason=f"{symbol}'s recent prices meet the buy rule.",
+            reason=(
+                f"{symbol}'s last {settings.rising_prices_needed_to_buy} prices "
+                "meet the rising-price rule."
+            ),
         )
 
     return result

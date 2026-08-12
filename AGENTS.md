@@ -68,8 +68,7 @@ The initial product starts with a broad pool of eligible stocks, finds stocks wi
 
 - Run one simple, configurable loop for the daily watchlist. A roughly 30-second interval is a reasonable starting point, not a hard-coded rule.
 - The strategy is price-only. Do not make buy or sell decisions from news.
-- The current exploration rule buys when every price in the latest configured number of observations is higher than the one before it and the total move meets the configured minimum percentage.
-- The next entry rule to evaluate measures the total rise over 30 minutes, compares it with QQQ over the same window, and confirms the stock is still higher than it was five minutes ago. Treat those values as configurable hypotheses.
+- Buy when each of the stock's latest configured number of price observations is higher than the one before it and the total rise meets the configured minimum. Start with five observations and treat the count and minimum rise as hypotheses to test.
 - Sell immediately when the price reaches the configured maximum loss below its actual buy price, regardless of recent jitter.
 - Also sell immediately when the current price falls by the configured fast-drop percentage from the highest price in the recent sell window.
 - Otherwise, sell on a falling trend only when every price in the recent sell window is lower than the one before it and the total decline meets the configured minimum percentage.
@@ -151,6 +150,7 @@ puddle-jump/
 ## Working practices
 
 - Treat this file as a living team agreement. Raise concerns, challenge weak decisions, and propose concrete alternatives when new evidence changes a tradeoff.
+- Append every meaningful historical strategy experiment to `STRATEGY_TESTING.md`, including its exact inputs, settings, costs, results, and conclusion. Never erase an unfavorable result.
 - Add type hints to new Python code.
 - Keep domain logic independent of storage, transport, and UI concerns.
 - Prefer simple, explicit designs; introduce additional services or databases only for a demonstrated need.
@@ -196,11 +196,11 @@ The project owner established `main` with this agreement, the chosen project ico
 ### Early viability checkpoint
 
 12. **Alpaca historical data access:** Add `alpaca-py` and the small `.env` loader, confirm they work with Python 3.14, and create the read-only stock-price client. Stop and discuss rather than silently changing Python if compatibility fails.
-13. **Historical replay inputs:** Cache one-minute prices for ten stocks across ten completed trading days. Keep the 30-day local cache out of Git and reuse it between runs.
+13. **Historical replay inputs:** Cache one-minute prices for ten stocks across 30 completed trading days. Keep the 30-day local cache out of Git and reuse it between runs.
 14. **Historical viability report:** Replay the actual buy and sell rules, include estimated costs, and report returns, trade count, winners, and an equal-weight baseline.
-15. **Thirty-minute entry rule:** Replace the short consecutive-price buy rule with the agreed 30-minute rise, QQQ comparison, and five-minute confirmation, then compare it with the existing replay result.
+15. **Rising-tick entry rule:** Buy from the stock's own latest price observations, start with five consecutive rises, and compare the result across 30 completed trading days.
 
-Stop after the thirty-minute comparison. The project owner must explicitly decide whether to continue, change the strategy, or end the project before the remaining work begins.
+Stop after the rising-tick comparison. The project owner must explicitly decide whether to continue, change the strategy, or end the project before the remaining work begins.
 
 ### Simulated trading
 

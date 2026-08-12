@@ -9,6 +9,7 @@ def check_rising_prices(
     minimum_rise_percent: float,
 ) -> bool:
     """Return whether the latest prices rise enough at every observation."""
+
     if prices_needed < 2:
         raise ValueError("A rising-price check needs at least two prices.")
 
