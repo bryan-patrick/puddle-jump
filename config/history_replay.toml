@@ -1,0 +1,17 @@
+symbols = [
+    "AAPL",
+    "MSFT",
+    "NVDA",
+    "AMZN",
+    "META",
+    "TSLA",
+    "INTC",
+    "MU",
+    "PLTR",
+    "TSM",
+]
+trading_days = 10
+cache_days = 30
+estimated_trade_cost_percent = 0.05
+price_feed = "iex"
+report_path = "data/replay-results/ten-day-report.md"

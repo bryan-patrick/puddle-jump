@@ -10,6 +10,7 @@ __pycache__/
 .ruff_cache/
 
 # Generated trading records
+data/cache/
 data/trading-days/
 data/market/
 data/replay-inputs/*/news.json

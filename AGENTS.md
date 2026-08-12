@@ -61,6 +61,7 @@ The initial product starts with a broad pool of eligible stocks, selects a small
 - Keep `watchlist.json` at the trading-day root and timestamped outlook files under `outlooks/`.
 - Keep live operational state and event records in SQLite, larger price histories in Parquet, and the daily summary in Markdown.
 - Keep Alpaca market data and news downloads local and ignored by Git unless Alpaca gives written permission to redistribute them. Commit the replay plan, source links, and manually assigned outlooks so the inputs can be recreated with the owner's credentials.
+- Cache downloaded news and historical prices locally for 30 days by default. Keep the retention period configurable and never commit the cache.
 
 ## Daily scorecard
 
@@ -162,7 +163,7 @@ puddle-jump/
 - Keep every pull request focused on one purpose and leave the project working when merged.
 - Do not mix unrelated cleanup, refactoring, or future scaffolding into a feature pull request.
 - Create directories and shared records only when the current feature needs them. Do not generate the full planned tree up front.
-- Do not add automated tests or testing dependencies during the initial exploration. Manually run the current feature and report what was checked.
+- Do not add automated unit tests or testing dependencies during the initial exploration. Historical strategy replay commands are useful evaluation tools and are not unit tests.
 - Revisit automated testing only after an explicit decision by the project owner.
 - Evaluate the trading idea against real historical inputs before building simulated accounts, order execution, or the user interface.
 - Historical evaluation must use only news and prices available at each simulated time, include estimated spread and slippage, and keep exploration periods separate from final evaluation periods.
@@ -202,8 +203,8 @@ The project owner established `main` with this agreement, the chosen project ico
 ### Early viability checkpoint
 
 14. **Alpaca historical data access:** Add `alpaca-py` and the small `.env` loader, confirm they work with Python 3.14, and create read-only stock-price and news clients. Stop and discuss rather than silently changing Python if compatibility fails.
-15. **Historical replay inputs:** Lock a small set of past stocks and dates, save the news and prices that were available at each simulated time, and manually assign outlooks without viewing later prices.
-16. **Historical viability report:** Replay the actual buy and sell rules, include estimated spread and slippage, compare exploration and evaluation periods, and report returns, losses, trade count, and simple baselines.
+15. **Historical replay inputs:** Cache the premarket news and one-minute prices for ten stocks across ten completed trading days. Keep the 30-day local cache out of Git and reuse it between runs.
+16. **Historical viability report:** Create repeatable outlooks from the cached premarket headlines, replay the actual buy and sell rules, include estimated costs, and report returns, trade count, winners, and an equal-weight baseline.
 
 Stop after the viability report. The project owner must explicitly decide whether to continue, change the strategy, or end the project before the remaining work begins.
 
@@ -241,6 +242,6 @@ Before the next pull request, stop so the project owner can review the read-only
 
 ### Later work
 
-37. **Automated news outlook:** Scan news across the stock pool, select the daily watchlist, and write the same outlook format already accepted from manual input.
+37. **Improve automated news outlook:** Replace the exploratory headline-word score, scan news across the stock pool, select the daily watchlist, and write the same outlook format already accepted from manual input.
 38. **Paper-trading review:** Compare replay and paper results, document differences, and decide whether the strategy is ready for further work.
 39. **Live trading:** Plan this only after an explicit team decision; it is not authorized by this roadmap alone.
